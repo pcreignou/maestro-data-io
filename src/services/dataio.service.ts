@@ -7,6 +7,7 @@ import { MasterRecordIdSObject } from 'src/mocks/MasterRecordIdSObject';
 import { AddressSObject } from 'src/mocks/AddressSObject';
 import { QueryExecutor } from 'src/utils/queryExecutor';
 import { FileDB } from 'src/db/fileDB';
+import { PersonSObject } from 'src/mocks/PersonSObject';
 
 enum ErrorCode {
   INTERNAL_ERROR = 'INTERNAL_ERROR',
@@ -132,7 +133,7 @@ export const searchRecords = (req: IReq<SearchRecordsBody>, res: IRes): IRes => 
  * @return {IRes}
  */
 export const getTypeNames = (req: IReq<GetTypeNamesBody>, res: IRes): IRes => {
-  return res.json({ typeNames: [{typeName: "Account", label: "Account"}, {typeName: "MasterRecordId", label: "The Master Record Id"}, {typeName: "Address", label: "Address"}] as TypeNameInfo[]})
+  return res.json({ typeNames: [{typeName: "Account", label: "Account"}, {typeName: "MasterRecordId", label: "The Master Record Id"}, {typeName: "Address", label: "Address"}, {typeName: "Person", label: "Person"}] as TypeNameInfo[]})
 };
 
 /**
@@ -152,7 +153,7 @@ export const getTypeDefinitions = (req: IReq<GetTypeDefinitionsBody>, res: IRes)
   }
   try {
     return res.json({
-      declarations: DataModelTransformer.transformSObjectsToConcerto([AccountSObject as any, MasterRecordIdSObject as any, AddressSObject as any])
+      declarations: DataModelTransformer.transformSObjectsToConcerto([AccountSObject as any, MasterRecordIdSObject as any, AddressSObject as any, PersonSObject as any])
     })
   } catch (err) {
     console.log(`Encountered an error getting type definitions: ${err.message}`);

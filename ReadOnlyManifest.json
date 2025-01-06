@@ -26,11 +26,11 @@
 		"params": {
 		  "provider": "CUSTOM",
 		  "scopes": [],
-		  "clientId": "<CLIENT_ID>",
-		  "clientSecret": "<CLIENT_SECRET>",
+		  "clientId": "dca1a44cefa68fa3a8b654b8c1e9e3923296497338dde0ea2a97986b032e8a8cf4d5e1d246e2e8f910ebb8d2e5408c08845e9fb691ac7993a641c395f490db88",
+		  "clientSecret": "87e71b592db3679c14c080dcda16f63fc21f616533790589abf7f33703e4c2a16501ecb1b6bb9ac3527f5fff53d2c4dc59d55df61d529b2af1b088bde38a2c99",
 		  "customConfig": {
-			"tokenUrl": "<PROXY_BASE_URL>/api/oauth/token",
-			"authorizationUrl": "<PROXY_BASE_URL>/api/oauth/authorize",
+			"tokenUrl": "https://8cf7-2a01-e0a-440-e680-1c79-56be-7a58-636f.ngrok-free.app/api/oauth/token",
+			"authorizationUrl": "https://8cf7-2a01-e0a-440-e680-1c79-56be-7a58-636f.ngrok-free.app/api/oauth/authorize",
 			"authorizationParams": {
 			  "access_type": "offline",
 			  "prompt": "consent"
@@ -62,7 +62,7 @@
 		"template": "DataIO.Version6.SearchRecords",
 		"connectionsReference": "authentication",
 		"params": {
-		  "uri": "<PROXY_BASE_URL>/api/dataio/searchRecords"
+		  "uri": "https://8cf7-2a01-e0a-440-e680-1c79-56be-7a58-636f.ngrok-free.app/api/dataio/searchRecords"
 		}
 	  },
 	  {
@@ -71,7 +71,7 @@
 		"template": "DataIO.Version6.GetTypeNames",
 		"connectionsReference": "authentication",
 		"params": {
-		  "uri": "<PROXY_BASE_URL>/api/dataio/getTypeNames"
+		  "uri": "https://8cf7-2a01-e0a-440-e680-1c79-56be-7a58-636f.ngrok-free.app/api/dataio/getTypeNames"
 		}
 	  },
 	  {
@@ -80,7 +80,7 @@
 		"template": "DataIO.Version6.GetTypeDefinitions",
 		"connectionsReference": "authentication",
 		"params": {
-		  "uri": "<PROXY_BASE_URL>/api/dataio/getTypeDefinitions"
+		  "uri": "https://8cf7-2a01-e0a-440-e680-1c79-56be-7a58-636f.ngrok-free.app/api/dataio/getTypeDefinitions"
 		}
 	  }
 	],

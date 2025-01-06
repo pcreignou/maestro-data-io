@@ -1,16 +1,14 @@
 [
   {
+    "Name": "Aramis auto Grenoble",
     "Id": "0",
-    "Name": "Account 0",
-    "Deleted": false,
-    "MasterRecordId": 1,
-    "PushCount": 100,
-    "Type": "two_year",
-    "ShippingLatitude": "ThisIsTest"
+    "MasterRecordId": "123456",
+    "Type": "Customer - Channel"
   },
   {
-    "ShippingLatitude": "ThisIsATestAgain",
-    "Type": "two_year",
-    "Id": "1"
+    "Id": "1",
+    "Name": "Peugeot Grenoble",
+    "Type": "Channel_Partner_Reseller",
+    "MasterRecordId": "1237489"
   }
 ]

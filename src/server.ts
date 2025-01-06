@@ -19,9 +19,21 @@ import { RouteError } from './utils/errors';
 import { UnauthorizedError } from 'express-jwt';
 
 const app = express();
+//const axios = require('axios');
+const { readFileSync } = require('fs');
+
+
 
 app.set('view engine', 'pug');
 app.set('views', './views');
+
+app.get('/accounts',async (req,res) => {
+  //const query = await axios.get('http://localhost:3001');
+  const data = readFileSync('./src/db/Account.json');
+  console.log(JSON.parse(data));
+  
+  res.render('account', { accounts: JSON.parse(data) });
+});
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true }));

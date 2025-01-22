@@ -1,5 +1,6 @@
 import { DeclarationUnion } from "@accordproject/concerto-types";
 import { IQuery } from "./IQuery";
+import mongoose, {Document, Schema } from "mongoose";
 
 
 // CreateEntity 
@@ -153,3 +154,43 @@ export type GetTypeDefinitionsResponse = {
    */
   errors?: GetTypeDefinitionsError[];
 }
+
+
+
+
+export interface ICustomer{
+    name: string;
+    accountNumber: string;
+    accountType: 'checking' | 'savings';
+    routingNumber: string;
+    firstName: string;
+    lastName: string;
+    dob:    Date;
+    email: string;
+    phone: string;
+
+}
+
+export interface ICustomerModel extends ICustomer, Document{
+
+}
+
+const CustomerSchema: Schema = new Schema(
+    {
+        name: { type: String, required: true },
+        accountNumber: {type: String, required: false },
+        accountType: {type: String, optional: true },
+        routingNumber:  {type: String, optional: true },
+        firstName: {type: String, optional: true },
+        lastName: {type: String, optional: true },
+        email:{type: String, optional:true},
+        phone:{type: String, optional:true},
+        dob:    {type: Date, optional: true }        
+          
+    },
+    {
+        versionKey: false
+    }
+);
+
+export default mongoose.model<ICustomerModel>('Customer', CustomerSchema);

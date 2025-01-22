@@ -1,7 +1,7 @@
 /**
  * Setup express server.
  */
-
+import mongoose from 'mongoose';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import express, { Request, Response, NextFunction } from 'express';
@@ -47,6 +47,16 @@ if (env.NODE_ENV === NodeEnvs.Dev) {
 if (env.NODE_ENV === NodeEnvs.Production) {
   app.use(helmet());
 }
+//connect to mongo
+
+mongoose
+        .connect(env.MONGO_URL,{retryWrites: true, w:'majority'})
+        .then(() => {
+          console.debug('connected to MongoDB.')
+        })
+        .catch((error) => {
+         console.error(error)
+        });
 
 // Add APIs, must be after middleware
 app.use(Paths.Base, BaseRouter);

@@ -1,0 +1,916 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "org.example@1.0.0.AccountType_Enum": {
+      "title": "AccountType_Enum",
+      "description": "An instance of org.example@1.0.0.AccountType_Enum",
+      "enum": [
+        "Prospect",
+        "Customer_Direct",
+        "Customer_Channel",
+        "Channel_Partner_Reseller",
+        "Installation_Partner",
+        "Technology_Partner",
+        "Other"
+      ]
+    },
+    "org.example@1.0.0.Account": {
+      "title": "Account",
+      "description": "An instance of org.example@1.0.0.Account",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.Account",
+          "pattern": "^org\\.example@1\\.0\\.0\\.Account$",
+          "description": "The class identifier for org.example@1.0.0.Account"
+        },
+        "Id": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "The instance identifier for this type",
+          "$decorators": {
+            "Term": [
+              "Account ID"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "Name": {
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Account Name"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "ShippingLatitude": {
+          "type": "number",
+          "$decorators": {
+            "Term": [
+              "Shipping Latitude"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "_61": {
+          "type": "boolean",
+          "$decorators": {
+            "Term": [
+              "Deleted"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "MasterRecordId": {
+          "type": "string",
+          "maxLength": 18,
+          "$decorators": {
+            "Term": [
+              "Master Record ID"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "PushCount": {
+          "type": "number",
+          "$decorators": {
+            "Term": [
+              "Push Count"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "Type": {
+          "$ref": "#/definitions/org.example@1.0.0.AccountType_Enum",
+          "$decorators": {
+            "Term": [
+              "Account Type"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "ChildAccounts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The identifier of an instance of org.example@1.0.0.Account"
+          },
+          "$decorators": {
+            "Term": [
+              "ChildAccounts"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "time": {
+          "format": "date-time",
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Time Something Happened"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "msRecord": {
+          "$ref": "#/definitions/org.example@1.0.0.MasterRecordId",
+          "$decorators": {
+            "Term": [
+              "Master Record Object"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "msRecord2": {
+          "type": "string",
+          "description": "The identifier of an instance of org.example@1.0.0.MasterRecordId",
+          "$decorators": {
+            "Term": [
+              "Master Record Relationship"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        }
+      },
+      "required": [
+        "$class",
+        "Id"
+      ],
+      "$decorators": {
+        "Term": [
+          "Account"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.MasterRecordIdType_Enum": {
+      "title": "MasterRecordIdType_Enum",
+      "description": "An instance of org.example@1.0.0.MasterRecordIdType_Enum",
+      "enum": [
+        "Prospect",
+        "Customer_Direct",
+        "Customer_Channel",
+        "Channel_Partner_Reseller",
+        "Installation_Partner",
+        "Technology_Partner",
+        "Other"
+      ]
+    },
+    "org.example@1.0.0.MasterRecordId": {
+      "title": "MasterRecordId",
+      "description": "An instance of org.example@1.0.0.MasterRecordId",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.MasterRecordId",
+          "pattern": "^org\\.example@1\\.0\\.0\\.MasterRecordId$",
+          "description": "The class identifier for org.example@1.0.0.MasterRecordId"
+        },
+        "Id": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "The instance identifier for this type",
+          "$decorators": {
+            "Term": [
+              "MasterRecordId ID"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "Deleted": {
+          "type": "boolean",
+          "$decorators": {
+            "Term": [
+              "Deleted"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "AccountId": {
+          "type": "string",
+          "description": "The identifier of an instance of org.example@1.0.0.Account",
+          "$decorators": {
+            "Term": [
+              "Account ID"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "PushCount": {
+          "type": "number",
+          "$decorators": {
+            "Term": [
+              "Push Count"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "Type": {
+          "$ref": "#/definitions/org.example@1.0.0.MasterRecordIdType_Enum",
+          "$decorators": {
+            "Term": [
+              "MasterRecordId Type"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "ShippingLatitude": {
+          "type": "number",
+          "$decorators": {
+            "Term": [
+              "Shipping Latitude"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "ChildMasterRecordIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The identifier of an instance of org.example@1.0.0.MasterRecordId"
+          },
+          "$decorators": {
+            "Term": [
+              "ChildMasterRecordIds"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "addy": {
+          "type": "string",
+          "description": "The identifier of an instance of org.example@1.0.0.Address",
+          "$decorators": {
+            "Term": [
+              "Address Relationship"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "addy2": {
+          "$ref": "#/definitions/org.example@1.0.0.Address",
+          "$decorators": {
+            "Term": [
+              "Address Object"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        }
+      },
+      "required": [
+        "$class",
+        "Id",
+        "Deleted",
+        "addy",
+        "addy2"
+      ],
+      "$decorators": {
+        "Term": [
+          "MasterRecordId"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.Address": {
+      "title": "Address",
+      "description": "An instance of org.example@1.0.0.Address",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.Address",
+          "pattern": "^org\\.example@1\\.0\\.0\\.Address$",
+          "description": "The class identifier for org.example@1.0.0.Address"
+        },
+        "Id": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "The instance identifier for this type",
+          "$decorators": {
+            "Term": [
+              "Address ID"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "Name": {
+          "type": "string",
+          "maxLength": 18,
+          "$decorators": {
+            "Term": [
+              "Name"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "street1": {
+          "type": "string",
+          "maxLength": 255,
+          "$decorators": {
+            "Term": [
+              "Street 1"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "street2": {
+          "type": "string",
+          "maxLength": 255,
+          "$decorators": {
+            "Term": [
+              "Street 2"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "locality": {
+          "type": "string",
+          "maxLength": 255,
+          "$decorators": {
+            "Term": [
+              "Locality"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "subdivision": {
+          "type": "string",
+          "maxLength": 100,
+          "$decorators": {
+            "Term": [
+              "Subdivision"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "countryOrRegion": {
+          "type": "string",
+          "maxLength": 100,
+          "$decorators": {
+            "Term": [
+              "Country or Region"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "postalCode": {
+          "type": "string",
+          "maxLength": 20,
+          "$decorators": {
+            "Term": [
+              "Postal Code"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        }
+      },
+      "required": [
+        "$class",
+        "Id"
+      ],
+      "$decorators": {
+        "Term": [
+          "Address"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.Contact": {
+      "title": "Contact",
+      "description": "An instance of org.example@1.0.0.Contact",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.Contact",
+          "pattern": "^org\\.example@1\\.0\\.0\\.Contact$",
+          "description": "The class identifier for org.example@1.0.0.Contact"
+        },
+        "Id": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "The instance identifier for this type",
+          "$decorators": {
+            "Term": [
+              "Contact ID"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "person": {
+          "$ref": "#/definitions/org.example@1.0.0.ContactPerson",
+          "$decorators": {
+            "Term": [
+              "Contact Person"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "contactAddresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.example@1.0.0.ContactAddress"
+          },
+          "$decorators": {
+            "Term": [
+              "Contact Adresses"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "bankAccount": {
+          "$ref": "#/definitions/org.example@1.0.0.BankAccount",
+          "$decorators": {
+            "Term": [
+              "Bank Account"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        }
+      },
+      "required": [
+        "$class",
+        "Id"
+      ],
+      "$decorators": {
+        "Term": [
+          "Contact"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.PersonDetail": {
+      "title": "PersonDetail",
+      "description": "An instance of org.example@1.0.0.PersonDetail",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.PersonDetail",
+          "pattern": "^org\\.example@1\\.0\\.0\\.PersonDetail$",
+          "description": "The class identifier for org.example@1.0.0.PersonDetail"
+        },
+        "Id": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "The instance identifier for this type",
+          "$decorators": {
+            "Term": [
+              "Person Detail ID"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Date of birth"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        }
+      },
+      "required": [
+        "$class",
+        "Id"
+      ],
+      "$decorators": {
+        "Term": [
+          "PersonDetail"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.BankAccount": {
+      "title": "BankAccount",
+      "description": "An instance of org.example@1.0.0.BankAccount",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.BankAccount",
+          "pattern": "^org\\.example@1\\.0\\.0\\.BankAccount$",
+          "description": "The class identifier for org.example@1.0.0.BankAccount"
+        },
+        "Id": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "The instance identifier for this type",
+          "$decorators": {
+            "Term": [
+              "Bank Account ID"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "sortCode": {
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Sort Code"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "clearAccountNumber": {
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Clearance Account Number"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        }
+      },
+      "required": [
+        "$class",
+        "Id"
+      ],
+      "$decorators": {
+        "Term": [
+          "BankAccount"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.ContactAddress": {
+      "title": "ContactAddress",
+      "description": "An instance of org.example@1.0.0.ContactAddress",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.ContactAddress",
+          "pattern": "^org\\.example@1\\.0\\.0\\.ContactAddress$",
+          "description": "The class identifier for org.example@1.0.0.ContactAddress"
+        },
+        "Id": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "The instance identifier for this type",
+          "$decorators": {
+            "Term": [
+              "Contact Address ID"
+            ],
+            "Crud": [
+              "Readable"
+            ]
+          }
+        },
+        "addressIdentifier": {
+          "type": "string"
+        },
+        "indicator": {
+          "type": "string"
+        },
+        "addressType": {
+          "type": "string"
+        },
+        "poBoxNumber": {
+          "type": "string"
+        },
+        "subBuilding": {
+          "type": "string"
+        },
+        "buildingName": {
+          "type": "string"
+        },
+        "buildingNumber": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "subLocality": {
+          "type": "string"
+        },
+        "locality": {
+          "type": "string"
+        },
+        "postTown": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "postal": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "residentFrom": {
+          "$ref": "#/definitions/org.example@1.0.0.ResidentFrom"
+        },
+        "residentTo": {
+          "$ref": "#/definitions/org.example@1.0.0.ResidentTo"
+        }
+      },
+      "required": [
+        "$class",
+        "Id"
+      ],
+      "$decorators": {
+        "Term": [
+          "ContactAddress"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.ResidentFrom": {
+      "title": "ResidentFrom",
+      "description": "An instance of org.example@1.0.0.ResidentFrom",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.ResidentFrom",
+          "pattern": "^org\\.example@1\\.0\\.0\\.ResidentFrom$",
+          "description": "The class identifier for org.example@1.0.0.ResidentFrom"
+        },
+        "fullDateFrom": {
+          "format": "date-time",
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Full Date From"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "yearFrom": {
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Year From"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "monthFrom": {
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Month From"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        },
+        "dayFrom": {
+          "type": "string",
+          "$decorators": {
+            "Term": [
+              "Day From"
+            ],
+            "Crud": [
+              "Createable,Readable,Updateable"
+            ]
+          }
+        }
+      },
+      "required": [
+        "$class"
+      ],
+      "$decorators": {
+        "Term": [
+          "ResidentFrom"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.ResidentTo": {
+      "title": "ResidentTo",
+      "description": "An instance of org.example@1.0.0.ResidentTo",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.ResidentTo",
+          "pattern": "^org\\.example@1\\.0\\.0\\.ResidentTo$",
+          "description": "The class identifier for org.example@1.0.0.ResidentTo"
+        },
+        "fullDateTo": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "yearTo": {
+          "type": "string"
+        },
+        "monthTo": {
+          "type": "string"
+        },
+        "dayTo": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class"
+      ],
+      "$decorators": {
+        "Term": [
+          "ResidentTo"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.Country": {
+      "title": "Country",
+      "description": "An instance of org.example@1.0.0.Country",
+      "enum": [
+        "UK",
+        "USA",
+        "FRANCE",
+        "GERMANY",
+        "JAPAN"
+      ]
+    },
+    "org.example@1.0.0.ContactName": {
+      "title": "ContactName",
+      "description": "An instance of org.example@1.0.0.ContactName",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.ContactName",
+          "pattern": "^org\\.example@1\\.0\\.0\\.ContactName$",
+          "description": "The class identifier for org.example@1.0.0.ContactName"
+        },
+        "Id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleNames": {
+          "type": "string"
+        },
+        "surName": {
+          "type": "string"
+        },
+        "nameSuffix": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "Id"
+      ],
+      "$decorators": {
+        "Term": [
+          "ContactName"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    },
+    "org.example@1.0.0.ContactPerson": {
+      "title": "ContactPerson",
+      "description": "An instance of org.example@1.0.0.ContactPerson",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.example@1.0.0.ContactPerson",
+          "pattern": "^org\\.example@1\\.0\\.0\\.ContactPerson$",
+          "description": "The class identifier for org.example@1.0.0.ContactPerson"
+        },
+        "typeOfPerson": {
+          "type": "string"
+        },
+        "personDetails": {
+          "$ref": "#/definitions/org.example@1.0.0.PersonDetail"
+        },
+        "names": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.example@1.0.0.ContactName"
+          }
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class"
+      ],
+      "$decorators": {
+        "Term": [
+          "ContactPerson"
+        ],
+        "Crud": [
+          "Createable,Readable,Updateable"
+        ]
+      }
+    }
+  }
+}

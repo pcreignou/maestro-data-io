@@ -1,0 +1,736 @@
+/*namespace org.example@1.0.0
+
+enum AccountType_Enum {
+  o Prospect
+  o Customer_Direct
+  o Customer_Channel
+  o Channel_Partner_Reseller
+  o Installation_Partner
+  o Technology_Partner
+  o Other
+}
+
+
+@Term("Account")
+@Crud("Createable,Readable,Updateable")
+concept Account identified by Id {
+  @Term("Account ID")
+  @Crud("Readable")
+  o String Id length=[0, 18]
+
+  @Term("Account Name")
+  @Crud("Createable,Readable,Updateable")
+  o String Name optional
+
+  @Term("Shipping Latitude")
+  @Crud("Createable,Readable,Updateable")
+  o Double ShippingLatitude optional
+
+  @Term("Deleted")
+  @Crud("Readable")
+  o Boolean _61 optional
+
+  @Term("Master Record ID")
+  @Crud("Readable")
+  o String MasterRecordId length=[0, 18] optional
+
+  @Term("Push Count")
+  @Crud("Readable")
+  o Double PushCount optional
+
+  @Term("Account Type")
+  @Crud("Createable,Readable,Updateable")
+  o AccountType_Enum Type optional
+
+  @Term("ChildAccounts")
+  @Crud("Createable,Readable,Updateable")
+  --> Account[] ChildAccounts optional
+
+
+  @Term("Time Something Happened")
+  @Crud("Createable,Readable,Updateable")
+  o DateTime time optional
+
+  @Term("Master Record Object")
+  @Crud("Createable,Readable,Updateable")
+  o MasterRecordId msRecord optional
+
+  @Term("Master Record Relationship")
+  @Crud("Createable,Readable,Updateable")
+  --> MasterRecordId msRecord2 optional
+}
+
+// Enum Declaration: MasterRecordIdType_Enum
+enum MasterRecordIdType_Enum {
+  o Prospect
+  o Customer_Direct
+  o Customer_Channel
+  o Channel_Partner_Reseller
+  o Installation_Partner
+  o Technology_Partner
+  o Other
+}
+
+// Concept Declaration: MasterRecordId
+@Term("MasterRecordId")
+@Crud("Createable,Readable,Updateable")
+concept MasterRecordId identified by Id {
+  @Term("MasterRecordId ID")
+  @Crud("Readable")
+  o String Id length=[0, 18]
+
+  @Term("Deleted")
+  @Crud("Readable")
+  o Boolean Deleted
+
+  @Term("Account ID")
+  @Crud("Readable")
+  --> Account AccountId optional
+
+  @Term("Push Count")
+  @Crud("Readable")
+  o Double PushCount optional
+
+  @Term("MasterRecordId Type")
+  @Crud("Createable,Readable,Updateable")
+  o MasterRecordIdType_Enum Type optional
+
+  @Term("Shipping Latitude")
+  @Crud("Createable,Readable,Updateable")
+  o Double ShippingLatitude optional
+
+  @Term("ChildMasterRecordIds")
+    @Crud("Createable,Readable,Updateable")
+  --> MasterRecordId[] ChildMasterRecordIds optional
+
+  @Term("Address Relationship")
+  @Crud("Createable,Readable,Updateable")
+  --> Address addy
+
+  @Term("Address Object")
+  @Crud("Createable,Readable,Updateable")
+  o Address addy2
+}
+
+// Concept: Address
+@Term("Address")
+@Crud("Createable,Readable,Updateable")
+concept Address identified by Id {
+  @Term("Address ID")
+  @Crud("Createable,Readable,Updateable")
+  o String Id length=[0, 18]
+
+  @Term("Name")
+  @Crud("Createable,Readable,Updateable")
+  o String Name length=[0, 18]  optional
+
+  @Term("Street 1")
+  @Crud("Createable,Readable,Updateable")
+  o String street1 length=[0, 255]  optional
+
+  @Term("Street 2")
+  @Crud("Createable,Readable,Updateable")
+  o String street2 length=[0, 255] optional
+
+  @Term("Locality")
+  @Crud("Createable,Readable,Updateable")
+  o String locality length=[0, 255] optional
+
+  @Term("Subdivision")
+  @Crud("Createable,Readable,Updateable")
+  o String subdivision length=[0, 100] optional
+
+  @Term("Country or Region")
+  @Crud("Createable,Readable,Updateable")
+  o String countryOrRegion length=[0, 100] optional
+
+  @Term("Postal Code")
+  @Crud("Createable,Readable,Updateable")
+  o String postalCode length=[0, 20] optional
+}
+
+
+
+
+@Term("Contact")
+@Crud("Createable,Readable,Updateable")
+concept Contact identified by Id {
+	    
+		@Term("Contact ID")
+		@Crud("Readable")
+        o String Id length=[0, 18]
+		@Term("Contact Person")
+		@Crud("Createable,Readable,Updateable")
+        o ContactPerson person optional
+		@Term("Contact Adresses")
+		@Crud("Createable,Readable,Updateable")
+        o ContactAddress[] contactAddresses optional
+		@Term("Bank Account")
+		@Crud("Createable,Readable,Updateable")
+        o BankAccount bankAccount optional      
+}
+
+
+@Term("PersonDetail")
+@Crud("Createable,Readable,Updateable")
+concept PersonDetail identified by Id {
+	@Term("Person Detail ID")	
+	@Crud("Readable")
+	o String Id length=[0, 18] 
+	@Term("Date of birth")
+	@Crud("Createable,Readable,Updateable")
+	o DateTime dateOfBirth optional
+}
+
+@Term("BankAccount")
+@Crud("Createable,Readable,Updateable")
+concept BankAccount identified by Id {
+	@Term("Bank Account ID")	
+	@Crud("Readable")
+	o String Id length=[0, 18] 
+	@Term("Sort Code")
+	@Crud("Createable,Readable,Updateable")
+	o String  sortCode optional
+	@Term("Clearance Account Number")
+	@Crud("Createable,Readable,Updateable")
+    o String  clearAccountNumber optional
+}
+
+@Term("ContactAddress")
+@Crud("Createable,Readable,Updateable")
+concept ContactAddress identified by ContactAddressId {
+   @Term("Contact Address ID")	
+   @Crud("Readable")
+   o String ContactAddressId length=[0, 18] 
+   @Term("Address Identifier")
+	@Crud("Createable,Readable,Updateable")
+   o String addressIdentifier optional
+   @Term("Indicator")
+	@Crud("Createable,Readable,Updateable")
+   o String indicator optional
+   @Term("Address Type")
+	@Crud("Createable,Readable,Updateable")
+   o String addressType optional
+   @Term("PO Box")
+	@Crud("Createable,Readable,Updateable")
+   o String poBoxNumber optional
+   @Term("Sub Building")
+	@Crud("Createable,Readable,Updateable")
+   o String subBuilding optional
+   @Term("Building Name")
+	@Crud("Createable,Readable,Updateable")
+   o String buildingName optional
+   @Term("Building Number")
+	@Crud("Createable,Readable,Updateable")
+   o String buildingNumber optional
+   @Term("Street")
+	@Crud("Createable,Readable,Updateable")
+   o String street optional
+   @Term("Street 2")
+	@Crud("Createable,Readable,Updateable")
+   o String street2 optional
+   @Term("Sub Locality")
+	@Crud("Createable,Readable,Updateable")
+   o String subLocality optional
+   @Term("Locality")
+	@Crud("Createable,Readable,Updateable")
+   o String locality optional
+   @Term("Post Town")
+	@Crud("Createable,Readable,Updateable")
+   o String postTown optional
+   @Term("County")
+	@Crud("Createable,Readable,Updateable")
+   o String county optional
+   @Term("Postal")
+	@Crud("Createable,Readable,Updateable")
+   o String postal optional
+   @Term("Country Code")
+	@Crud("Createable,Readable,Updateable")
+   o String countryCode optional
+   @Term("Resident Full Date From")
+	@Crud("Createable,Readable,Updateable")
+   o DateTime fullDateFrom optional
+   @Term("Resident Year From")
+	@Crud("Createable,Readable,Updateable")
+   o String yearFrom optional
+   @Term("Resident Month From")
+	@Crud("Createable,Readable,Updateable")
+   o String monthFrom optional
+   @Term("Resident Day From")
+	@Crud("Createable,Readable,Updateable")
+   o String dayFrom optional
+   @Term("Resident Full Date To")
+	@Crud("Createable,Readable,Updateable")
+   o DateTime fullDateTo optional
+   @Term("Resident Year To")
+	@Crud("Createable,Readable,Updateable")
+   o String yearTo optional
+   @Term("Resident Month To")
+	@Crud("Createable,Readable,Updateable")
+   o String monthTo optional
+   @Term("Resident Day To")
+	@Crud("Createable,Readable,Updateable")
+   o String dayTo optional
+}
+
+@Term("ResidentFrom")
+@Crud("Createable,Readable,Updateable")
+concept ResidentFrom{
+@Term("Full Date From")
+@Crud("Createable,Readable,Updateable")
+    o DateTime fullDateFrom optional
+			  @Term("Year From")
+				@Crud("Createable,Readable,Updateable")
+              o String yearFrom optional
+			  @Term("Month From")
+				@Crud("Createable,Readable,Updateable")
+              o String monthFrom optional
+			  @Term("Day From")
+				@Crud("Createable,Readable,Updateable")
+              o String dayFrom optional
+			  
+}
+
+@Term("ResidentTo")
+@Crud("Createable,Readable,Updateable")
+concept ResidentTo{
+  	@Term("Full Date To")
+				@Crud("Createable,Readable,Updateable")
+              o DateTime fullDateTo optional
+                @Term("Year To")
+				@Crud("Createable,Readable,Updateable")
+              o String yearTo optional
+              @Term("Month To")
+				@Crud("Createable,Readable,Updateable")
+              o String monthTo optional
+               @Term("Day To")
+				@Crud("Createable,Readable,Updateable")
+              o String dayTo optional
+			  
+}
+
+
+enum Country {
+   o UK
+   o USA
+   o FRANCE
+   o GERMANY
+   o JAPAN
+}
+
+@Term("ContactName")
+@Crud("Createable,Readable,Updateable")
+concept ContactName identified by contactNameId{
+  @Term("Contact Name Id")
+	@Crud("Readable")
+    o String    	contactNameId
+    @Term("Title")
+		@Crud("Createable,Readable,Updateable")
+    o String    	title optional
+    @Term("First Name")
+		@Crud("Createable,Readable,Updateable")
+		o String   	firstName optional
+    @Term("Middle Name")
+		@Crud("Createable,Readable,Updateable")
+    o String  	middleNames optional
+    @Term("SurName")
+		@Crud("Createable,Readable,Updateable")
+		o String     surName optional
+    @Term("Name Suffix")
+		@Crud("Createable,Readable,Updateable")
+		o String 	nameSuffix optional
+}
+
+@Term("ContactPerson")
+@Crud("Createable,Readable,Updateable")
+concept ContactPerson identified by contactPersonId {
+  o String contactPersonId   
+  o String typeOfPerson   optional
+  o PersonDetail personDetails   optional
+  o ContactName[] names optional
+  o DateTime dateOfBirth  optional
+}*/
+
+namespace com.docusign.maestro.bav@1.0.0
+
+@Description("Main response asset containing details about the request and processing outcomes.")
+@Term("Response")
+@Crud("CREATE, READ, UPDATE, DELETE")
+asset Response identified by responseId {
+  @Description("Unique identifier for the response.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Identifier")
+  o String responseId
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Header")
+  o ResponseHeader responseHeader
+  @Crud("Createable,Readable,Updateable")
+  @Term("Client Response Payload")
+  o ClientResponsePayload clientResponsePayload
+  @Crud("Createable,Readable,Updateable")
+  @Term("Original Request Data")
+  o OriginalRequestData originalRequestData
+}
+
+// Response Header
+@Description("Header information for the response.")
+@Term("Header")
+@Crud("Createable,Readable,Updateable")
+concept ResponseHeader {
+  @Description("Type of request that was processed.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Request Type")
+  o String requestType
+  @Description("Client-provided reference identifier.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Client Reference ID")
+  o String clientReferenceId
+  @Description("Unique identifier for the request within the system.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Exp Request ID")
+  o String expRequestId
+  @Description("Timestamp of the message.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Message Time")
+  o String messageTime
+  @Crud("Createable,Readable,Updateable")
+  @Term("Overall Response")
+  o OverallResponse overallResponse
+  @Description("Code representing the outcome of the response.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Code")
+  o String responseCode
+  @Description("Type of the response, such as success or failure.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Type")
+  o String responseType
+  @Description("Human-readable message describing the response.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Message")
+  o String responseMessage
+  @Description("Identifier for the tenant associated with the request.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Tenant ID")
+  o String tenantID
+}
+
+@Description("Overall response summary including decisions and next steps.")
+@Term("Overall Response")
+@Crud("Createable,Readable,Updateable")
+concept OverallResponse {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision")
+  o String decision
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Text")
+  o String decisionText
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Reasons")
+  o String[] decisionReasons
+  @Description("Suggested next actions based on the decision.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Recommended Next Actions")
+  o String[] recommendedNextActions optional
+  @Description("Additional objects related to the decision.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Spare Objects")
+  o String[] spareObjects optional
+}
+
+// Client Response Payload
+@Description("Details of the client-specific response payload.")
+@Term("Client Payload")
+@Crud("Createable,Readable,Updateable")
+concept ClientResponsePayload {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Orchestration Decisions")
+  o OrchestrationDecision[] orchestrationDecisions
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Elements")
+  o DecisionElement[] decisionElements
+}
+
+@Description("Decision made during orchestration.")
+@Term("Orchestration Decision")
+@Crud("Createable,Readable,Updateable")
+concept OrchestrationDecision {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Sequence ID")
+  o String sequenceId
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Source")
+  o String decisionSource
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision")
+  o String decision
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Reasons")
+  o String[] decisionReasons
+  @Description("Score associated with the decision.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Score")
+  o Double score optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Text")
+  o String decisionText
+  @Crud("Createable,Readable,Updateable")
+  @Term("Next Action")
+  o String nextAction
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Time")
+  o String decisionTime
+}
+
+@Description("Element detailing specific decisions and associated metadata.")
+@Term("Decision Element")
+@Crud("Createable,Readable,Updateable")
+concept DecisionElement {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Service Name")
+  o String serviceName
+  @Crud("Createable,Readable,Updateable")
+  @Term("Applicant ID")
+  o String applicantId optional
+  @Description("Warnings or errors related to the service.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Warnings Errors")
+  o WarningError[] warningsErrors optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Other Data")
+  o OtherData otherData optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decisions")
+  o String[] decisions optional
+}
+
+@Description("Warning or error information returned by a service.")
+@Term("Warning/Error")
+@Crud("Createable,Readable,Updateable")
+concept WarningError {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Type")
+  o String responseType
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Code")
+  o String responseCode optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Message")
+  o String responseMessage
+}
+
+@Description("Additional data related to the client response.")
+@Term("Other Data")
+@Crud("Createable,Readable,Updateable")
+concept OtherData {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Branch Data")
+  o String[] branchData optional
+}
+
+// Original Request Data
+@Description("Data from the original request.")
+@Term("Original Request")
+@Crud("Createable,Readable,Updateable")
+concept OriginalRequestData {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Application")
+  o Application application
+  @Crud("Createable,Readable,Updateable")
+  @Term("Source")
+  o String source
+  @Crud("Createable,Readable,Updateable")
+  @Term("Contacts")
+  o Contact[] contacts
+}
+
+@Description("Application details including applicants.")
+@Term("Application")
+@Crud("Createable,Readable,Updateable")
+concept Application {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Applicants")
+  o Applicant[] applicants
+}
+
+@Description("Details of an individual applicant.")
+@Term("Applicant")
+@Crud("Createable,Readable,Updateable")
+concept Applicant {
+  @Crud("Createable,Readable,Updateable")
+  @Term("ID")
+  o String id
+  @Crud("Createable,Readable,Updateable")
+  @Term("Contact ID")
+  o String contactId
+}
+
+@Description("Contact information for a person or entity.")
+@Term("Contact")
+@Crud("Createable,Readable,Updateable")
+concept Contact {
+  @Crud("Createable,Readable,Updateable")
+  @Term("ID")
+  o String id
+  @Crud("Createable,Readable,Updateable")
+  @Term("Person")
+  o Person person
+  @Crud("Createable,Readable,Updateable")
+  @Term("Addresses")
+  o Address[] addresses
+  @Crud("Createable,Readable,Updateable")
+  @Term("Bank Account")
+  o BankAccount bankAccount
+}
+
+@Description("Details about a person.")
+@Term("Person")
+@Crud("Createable,Readable,Updateable")
+concept Person {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Type Of Person")
+  o String typeOfPerson
+  @Crud("Createable,Readable,Updateable")
+  @Term("Person Details")
+  o PersonDetails personDetails
+  @Crud("Createable,Readable,Updateable")
+  @Term("Names")
+  o Name[] names
+}
+
+@Description("Additional details about a person.")
+@Term("Person Details")
+@Crud("Createable,Readable,Updateable")
+concept PersonDetails {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Date Of Birth")
+  o String dateOfBirth optional
+}
+
+@Description("Name details including first name and surname.")
+@Term("Name")
+@Crud("Createable,Readable,Updateable")
+concept Name {
+  @Crud("Createable,Readable,Updateable")
+  @Term("ID")
+  o String id
+  @Crud("Createable,Readable,Updateable")
+  @Term("Type")
+  o String type
+  @Crud("Createable,Readable,Updateable")
+  @Term("Title")
+  o String title
+  @Crud("Createable,Readable,Updateable")
+  @Term("First Name")
+  o String firstName
+  @Crud("Createable,Readable,Updateable")
+  o String middleNames optional
+  @Crud("Createable,Readable,Updateable")
+  o String surName
+  @Crud("Createable,Readable,Updateable")
+  o String nameSuffix optional
+}
+
+@Description("Address details for a contact.")
+@Term("Address")
+@Crud("Createable,Readable,Updateable")
+concept Address {
+  @Crud("Createable,Readable,Updateable")
+  @Term("ID")
+  o String id
+  @Crud("Createable,Readable,Updateable")
+  @Term("Address Identifier")
+  o String addressIdentifier
+  @Crud("Createable,Readable,Updateable")
+  @Term("Indicator")
+  o String indicator
+  @Crud("Createable,Readable,Updateable")
+  @Term("Address Type")
+  o String addressType
+  @Crud("Createable,Readable,Updateable")
+  @Term("PO Box Nunmber")
+  o String poBoxNumber optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Sub Building")
+  o String subBuilding optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Building Name")
+  o String buildingName optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Building Number")
+  o String buildingNumber
+  @Crud("Createable,Readable,Updateable")
+  @Term("Street")
+  o String street
+  @Crud("Createable,Readable,Updateable")
+  @Term("Street2")
+  o String street2 optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Sub Locality")
+  o String subLocality optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Locality")
+  o String locality optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Post Town")
+  o String postTown
+  @Crud("Createable,Readable,Updateable")
+  @Term("County")
+  o String county optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Postal")
+  o String postal
+  @Crud("Createable,Readable,Updateable")
+  @Term("Contry Code")
+  o String countryCode
+  @Crud("Createable,Readable,Updateable")
+  @Term("Resident From")
+  o ResidencyPeriod residentFrom
+  @Crud("Createable,Readable,Updateable")
+  @Term("Resident To")
+  o ResidencyPeriod residentTo
+}
+
+@Description("Period of residency at an address.")
+@Term("Residency Period")
+@Crud("Createable,Readable,Updateable")
+concept ResidencyPeriod {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Full Date From")
+  o String fullDateFrom
+  @Crud("Createable,Readable,Updateable")
+  @Term("Year From")
+  o String yearFrom
+  @Crud("Createable,Readable,Updateable")
+  @Term("Month From")
+  o String monthFrom
+  @Crud("Createable,Readable,Updateable")
+  @Term("Day From")
+  o String dayFrom
+  @Crud("Createable,Readable,Updateable")
+  @Term("full Date To")
+  o String fullDateTo optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Year To")
+  o String yearTo optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Month To")
+  o String monthTo optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Day to")
+  o String dayTo optional
+}
+
+@Description("Bank account details for a contact.")
+@Term("Bank Account")
+@Crud("Createable,Readable,Updateable")
+concept BankAccount {
+  @Crud("Createable,Readable,Updateable")
+  @Term("Sort Code")
+  o String sortCode
+  @Crud("Createable,Readable,Updateable")
+  @Term("Clear account Number")
+  o String clearAccountNumber optional
+}
+
+
+

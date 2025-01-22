@@ -1,0 +1,326 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "com.docusign.maestro@1.0.0.PersonDetail": {
+      "title": "PersonDetail",
+      "description": "An instance of com.docusign.maestro@1.0.0.PersonDetail",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "com.docusign.maestro@1.0.0.PersonDetail",
+          "pattern": "^com\\.docusign\\.maestro@1\\.0\\.0\\.PersonDetail$",
+          "description": "The class identifier for com.docusign.maestro@1.0.0.PersonDetail"
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "dateOfBirth"
+      ]
+    },
+    "com.docusign.maestro@1.0.0.BankAccount": {
+      "title": "BankAccount",
+      "description": "An instance of com.docusign.maestro@1.0.0.BankAccount",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "com.docusign.maestro@1.0.0.BankAccount",
+          "pattern": "^com\\.docusign\\.maestro@1\\.0\\.0\\.BankAccount$",
+          "description": "The class identifier for com.docusign.maestro@1.0.0.BankAccount"
+        },
+        "sortCode": {
+          "type": "string"
+        },
+        "clearAccountNumber": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "sortCode",
+        "clearAccountNumber"
+      ]
+    },
+    "com.docusign.maestro@1.0.0.Address": {
+      "title": "Address",
+      "description": "An instance of com.docusign.maestro@1.0.0.Address",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "com.docusign.maestro@1.0.0.Address",
+          "pattern": "^com\\.docusign\\.maestro@1\\.0\\.0\\.Address$",
+          "description": "The class identifier for com.docusign.maestro@1.0.0.Address"
+        },
+        "id": {
+          "type": "string"
+        },
+        "addressIdentifier": {
+          "type": "string"
+        },
+        "indicator": {
+          "type": "string"
+        },
+        "addressType": {
+          "type": "string"
+        },
+        "poBoxNumber": {
+          "type": "string"
+        },
+        "subBuilding": {
+          "type": "string"
+        },
+        "buildingName": {
+          "type": "string"
+        },
+        "buildingNumber": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "subLocality": {
+          "type": "string"
+        },
+        "locality": {
+          "type": "string"
+        },
+        "postTown": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "postal": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "residentFrom": {
+          "$ref": "#/definitions/com.docusign.maestro@1.0.0.ResidentFrom"
+        },
+        "residentTo": {
+          "$ref": "#/definitions/com.docusign.maestro@1.0.0.ResidentTo"
+        }
+      },
+      "required": [
+        "$class",
+        "id",
+        "addressIdentifier",
+        "indicator",
+        "addressType",
+        "poBoxNumber",
+        "subBuilding",
+        "buildingName",
+        "buildingNumber",
+        "street",
+        "street2",
+        "subLocality",
+        "locality",
+        "postTown",
+        "county",
+        "postal",
+        "countryCode",
+        "residentFrom",
+        "residentTo"
+      ]
+    },
+    "com.docusign.maestro@1.0.0.ResidentFrom": {
+      "title": "ResidentFrom",
+      "description": "An instance of com.docusign.maestro@1.0.0.ResidentFrom",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "com.docusign.maestro@1.0.0.ResidentFrom",
+          "pattern": "^com\\.docusign\\.maestro@1\\.0\\.0\\.ResidentFrom$",
+          "description": "The class identifier for com.docusign.maestro@1.0.0.ResidentFrom"
+        },
+        "fullDateFrom": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "yearFrom": {
+          "type": "string"
+        },
+        "monthFrom": {
+          "type": "string"
+        },
+        "dayFrom": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "fullDateFrom",
+        "yearFrom",
+        "monthFrom",
+        "dayFrom"
+      ]
+    },
+    "com.docusign.maestro@1.0.0.ResidentTo": {
+      "title": "ResidentTo",
+      "description": "An instance of com.docusign.maestro@1.0.0.ResidentTo",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "com.docusign.maestro@1.0.0.ResidentTo",
+          "pattern": "^com\\.docusign\\.maestro@1\\.0\\.0\\.ResidentTo$",
+          "description": "The class identifier for com.docusign.maestro@1.0.0.ResidentTo"
+        },
+        "fullDateTo": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "yearTo": {
+          "type": "string"
+        },
+        "monthTo": {
+          "type": "string"
+        },
+        "dayTo": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "fullDateTo",
+        "yearTo",
+        "monthTo",
+        "dayTo"
+      ]
+    },
+    "com.docusign.maestro@1.0.0.Country": {
+      "title": "Country",
+      "description": "An instance of com.docusign.maestro@1.0.0.Country",
+      "enum": [
+        "UK",
+        "USA",
+        "FRANCE",
+        "GERMANY",
+        "JAPAN"
+      ]
+    },
+    "com.docusign.maestro@1.0.0.Name": {
+      "title": "Name",
+      "description": "An instance of com.docusign.maestro@1.0.0.Name",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "com.docusign.maestro@1.0.0.Name",
+          "pattern": "^com\\.docusign\\.maestro@1\\.0\\.0\\.Name$",
+          "description": "The class identifier for com.docusign.maestro@1.0.0.Name"
+        },
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleNames": {
+          "type": "string"
+        },
+        "surName": {
+          "type": "string"
+        },
+        "nameSuffix": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "id",
+        "title",
+        "firstName",
+        "middleNames",
+        "surName",
+        "nameSuffix"
+      ]
+    },
+    "com.docusign.maestro@1.0.0.Person": {
+      "title": "Person",
+      "description": "An instance of com.docusign.maestro@1.0.0.Person",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "com.docusign.maestro@1.0.0.Person",
+          "pattern": "^com\\.docusign\\.maestro@1\\.0\\.0\\.Person$",
+          "description": "The class identifier for com.docusign.maestro@1.0.0.Person"
+        },
+        "typeOfPerson": {
+          "type": "string"
+        },
+        "personDetails": {
+          "$ref": "#/definitions/com.docusign.maestro@1.0.0.PersonDetail"
+        },
+        "names": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/com.docusign.maestro@1.0.0.Name"
+          }
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "typeOfPerson",
+        "personDetails",
+        "names",
+        "dateOfBirth"
+      ]
+    },
+    "com.docusign.maestro@1.0.0.Contact": {
+      "title": "Contact",
+      "description": "An instance of com.docusign.maestro@1.0.0.Contact",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "com.docusign.maestro@1.0.0.Contact",
+          "pattern": "^com\\.docusign\\.maestro@1\\.0\\.0\\.Contact$",
+          "description": "The class identifier for com.docusign.maestro@1.0.0.Contact"
+        },
+        "id": {
+          "type": "string"
+        },
+        "person": {
+          "$ref": "#/definitions/com.docusign.maestro@1.0.0.Person"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/com.docusign.maestro@1.0.0.Address"
+          }
+        },
+        "bankAccount": {
+          "$ref": "#/definitions/com.docusign.maestro@1.0.0.BankAccount"
+        }
+      },
+      "required": [
+        "$class",
+        "id",
+        "person",
+        "addresses",
+        "bankAccount"
+      ]
+    }
+  }
+}

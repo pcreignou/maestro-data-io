@@ -1,0 +1,97 @@
+namespace com.docusign.maestro@1.0.0
+
+@Term("PersonDetail")
+@Crud("Createable,Readable,Updateable")
+concept PersonDetail {
+	o DateTime dateOfBirth
+}
+
+@Term("BankAccount")
+@Crud("Createable,Readable,Updateable")
+concept BankAccount {
+	o String  sortCode
+    o String  clearAccountNumber
+}
+
+@Term("ContactAddress")
+@Crud("Createable,Readable,Updateable")
+concept ContactAddress {
+   o String id
+   o String addressIdentifier
+   o String indicator
+   o String addressType
+   o String poBoxNumber
+   o String subBuilding
+   o String buildingName
+   o String buildingNumber
+   o String street
+   o String street2
+   o String subLocality
+   o String locality
+   o String postTown
+   o String county
+   o String postal
+   o String countryCode
+   o ResidentFrom residentFrom   
+   o ResidentTo residentTo
+}
+
+@Term("ResidentFrom")
+@Crud("Createable,Readable,Updateable")
+concept ResidentFrom{
+              o DateTime fullDateFrom
+              o String yearFrom
+              o String monthFrom
+              o String dayFrom
+			  
+}
+
+@Term("ResidentTo")
+@Crud("Createable,Readable,Updateable")
+concept ResidentTo{
+              o DateTime fullDateTo
+              o String yearTo
+              o String monthTo
+              o String dayTo
+			  
+}
+
+
+enum Country {
+   o UK
+   o USA
+   o FRANCE
+   o GERMANY
+   o JAPAN
+}
+
+@Term("ContactName")
+@Crud("Createable,Readable,Updateable")
+concept ContactName{
+           o String    	id
+           o String    	title
+		   o String   	firstName
+           o String  	middleNames
+		   o String     surName
+		   o String 	nameSuffix
+}
+
+@Term("ContactPerson")
+@Crud("Createable,Readable,Updateable")
+concept ContactPerson {
+  o String typeOfPerson  
+  o PersonDetail personDetails  
+  o ContactName[] names
+  o DateTime dateOfBirth 
+}
+
+@Term("Contact")
+@Crud("Createable,Readable,Updateable")
+concept Contact {
+	    
+        o String id 
+        o ContactPerson person 
+        o ContactAddress[] addresses
+        o BankAccount bankAccount
+      
+}

@@ -1,4 +1,4 @@
-/*namespace org.example@1.0.0
+namespace com.docusign.maestro.bav@1.0.0
 
 enum AccountType_Enum {
   o Prospect
@@ -349,9 +349,9 @@ concept ContactPerson identified by contactPersonId {
   o PersonDetail personDetails   optional
   o ContactName[] names optional
   o DateTime dateOfBirth  optional
-}*/
+}
 
-namespace com.docusign.maestro.bav@1.0.0
+
 
 @Description("Main response asset containing details about the request and processing outcomes.")
 @Term("Response")
@@ -563,7 +563,7 @@ concept Applicant {
   @Term("Contact ID")
   o String contactId
 }
-
+ /*
 @Description("Contact information for a person or entity.")
 @Term("Contact")
 @Crud("Createable,Readable,Updateable")
@@ -730,6 +730,141 @@ concept BankAccount {
   @Crud("Createable,Readable,Updateable")
   @Term("Clear account Number")
   o String clearAccountNumber optional
+}*/
+
+@Description("Main response asset containing details about the request and processing outcomes.")
+@Term("FlatBAVResponse")
+@Crud("CREATE, READ, UPDATE, DELETE")
+asset Response identified by responseId {
+  @Description("Unique identifier for the response.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Identifier")
+  o String responseId
+  @Crud("Createable,Readable,Updateable")
+  @Term("Request Type")
+  o String requestType
+  @Description("Client-provided reference identifier.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Client Reference ID")
+  o String clientReferenceId
+  @Description("Unique identifier for the request within the system.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Exp Request ID")
+  o String expRequestId
+  @Description("Timestamp of the message.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Message Time")
+  o String messageTime
+   @Crud("Createable,Readable,Updateable")
+  @Term("Decision")
+  o String decision
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Text")
+  o String decisionText
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Reasons")
+  o String[] decisionReasons
+  @Description("Suggested next actions based on the decision.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Recommended Next Actions")
+  o String[] recommendedNextActions optional
+  @Description("Additional objects related to the decision.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Spare Objects")
+  o String[] spareObjects optional
+  @Description("Code representing the outcome of the response.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Code")
+  o String responseCode
+  @Description("Type of the response, such as success or failure.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Type")
+  o String responseType
+  @Description("Human-readable message describing the response.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Response Message")
+  o String responseMessage
+  @Description("Identifier for the tenant associated with the request.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Tenant ID")
+  o String tenantID
+ @Crud("Createable,Readable,Updateable")
+  @Term("Sequence ID")
+  o String sequenceId
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Source")
+  o String decisionSource
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision")
+  o String decision
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Reasons")
+  o String[] decisionReasons
+  @Description("Score associated with the decision.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Score")
+  o Double score optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Text")
+  o String decisionText
+  @Crud("Createable,Readable,Updateable")
+  @Term("Next Action")
+  o String nextAction
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decision Time")
+  o String decisionTime  
+  @Crud("Createable,Readable,Updateable")
+  @Term("Service Name")
+  o String serviceName
+  @Crud("Createable,Readable,Updateable")
+  @Term("Applicant ID")
+  o String applicantId optional
+  @Description("Warnings or errors related to the service.")
+  @Crud("Createable,Readable,Updateable")
+  @Term("Warnings Errors")
+  o String[] warningsErrors optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Branch Data")
+  o String[] branchData optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Decisions")
+  o String[] decisions optional  
+  @Crud("Createable,Readable,Updateable")
+  @Term("Source")
+  o String source  
+  @Crud("Createable,Readable,Updateable")
+  @Term("contact ID")
+  o String ContactId
+  @Crud("Createable,Readable,Updateable")
+  @Term("Type Of Person")
+  o String typeOfPerson
+  @Crud("Createable,Readable,Updateable")
+  @Term("Date Of Birth")
+  o String dateOfBirth optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("ID")
+  o String id
+  @Crud("Createable,Readable,Updateable")
+  @Term("Type")
+  o String type
+  @Crud("Createable,Readable,Updateable")
+  @Term("Title")
+  o String title
+  @Crud("Createable,Readable,Updateable")
+  @Term("First Name")
+  o String firstName
+  @Crud("Createable,Readable,Updateable")
+  o String middleNames optional
+  @Crud("Createable,Readable,Updateable")
+  o String surName
+  @Crud("Createable,Readable,Updateable")
+  o String nameSuffix optional
+  @Crud("Createable,Readable,Updateable")
+  @Term("Addresses")
+  o Address[] addresses
+  @Crud("Createable,Readable,Updateable")
+  @Term("Bank Account")
+  o BankAccount bankAccount
 }
 
 

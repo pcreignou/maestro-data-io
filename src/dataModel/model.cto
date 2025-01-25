@@ -689,7 +689,7 @@ concept BAV_Responseheader {
     o String responseHeader_tenantID optional
 }
 
-@Term("BAV")
+/*@Term("BAV")
 @Crud("Createable,Readable,Updateable")
 concept BAV {
     @Term("responseHeader")
@@ -701,4 +701,129 @@ concept BAV {
     @Term("originalRequestData")
     @Crud("Createable,Readable,Updateable")
     o BAV_Originalrequestdata originalRequestData optional
+}*/
+
+@Term("BAV")
+@Crud("Createable,Readable,Updateable")
+concept BAV identified by _Id{  
+	@Term("BAV Id")
+    @Crud("Readable")
+    o String _Id
+	 @Term("originalRequestData_source")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_source optional	
+	@Term("originalRequestData_application_applicants_id")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_application_applicants_id optional
+    @Term("originalRequestData_application_applicants_contactId")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_application_applicants_contactId optional
+	 @Term("originalRequestData_contacts_id")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_id optional
+	@Term("originalRequestData_contacts_person_typeOfPerson")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_typeOfPerson optional   
+	 @Term("originalRequestData_contacts_person_personDetails_dateOfBirth")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_personDetails_dateOfBirth optional
+	  @Term("originalRequestData_contacts_person_names_id")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_names_id optional
+    @Term("originalRequestData_contacts_person_names_type")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_names_type optional
+    @Term("originalRequestData_contacts_person_names_title")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_names_title optional
+    @Term("originalRequestData_contacts_person_names_firstName")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_names_firstName optional
+    @Term("originalRequestData_contacts_person_names_middleNames")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_names_middleNames optional
+    @Term("originalRequestData_contacts_person_names_surName")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_names_surName optional
+    @Term("originalRequestData_contacts_person_names_nameSuffix")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_person_names_nameSuffix optional
+	 @Term("originalRequestData_contacts_addresses_id")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_id optional
+    @Term("originalRequestData_contacts_addresses_addressIdentifier")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_addressIdentifier optional
+    @Term("originalRequestData_contacts_addresses_indicator")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_indicator optional
+    @Term("originalRequestData_contacts_addresses_addressType")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_addressType optional
+    @Term("originalRequestData_contacts_addresses_poBoxNumber")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_poBoxNumber optional
+    @Term("originalRequestData_contacts_addresses_subBuilding")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_subBuilding optional
+    @Term("originalRequestData_contacts_addresses_buildingName")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_buildingName optional
+    @Term("originalRequestData_contacts_addresses_buildingNumber")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_buildingNumber optional
+    @Term("originalRequestData_contacts_addresses_street")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_street optional
+    @Term("originalRequestData_contacts_addresses_street2")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_street2 optional
+    @Term("originalRequestData_contacts_addresses_subLocality")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_subLocality optional
+    @Term("originalRequestData_contacts_addresses_locality")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_locality optional
+    @Term("originalRequestData_contacts_addresses_postTown")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_postTown optional
+    @Term("originalRequestData_contacts_addresses_county")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_county optional
+    @Term("originalRequestData_contacts_addresses_postal")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_postal optional
+    @Term("originalRequestData_contacts_addresses_countryCode")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_countryCode optional
+	 @Term("originalRequestData_contacts_addresses_residentFrom_fullDateFrom")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_residentFrom_fullDateFrom optional
+    @Term("originalRequestData_contacts_addresses_residentFrom_yearFrom")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_residentFrom_yearFrom optional
+    @Term("originalRequestData_contacts_addresses_residentFrom_monthFrom")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_residentFrom_monthFrom optional
+    @Term("originalRequestData_contacts_addresses_residentFrom_dayFrom")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_residentFrom_dayFrom optional
+	 @Term("originalRequestData_contacts_addresses_residentTo_fullDateTo")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_residentTo_fullDateTo optional
+    @Term("originalRequestData_contacts_addresses_residentTo_yearTo")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_residentTo_yearTo optional
+    @Term("originalRequestData_contacts_addresses_residentTo_monthTo")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_residentTo_monthTo optional
+    @Term("originalRequestData_contacts_addresses_residentTo_dayTo")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_addresses_residentTo_dayTo optional
+	 @Term("originalRequestData_contacts_bankAccount_sortCode")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_bankAccount_sortCode optional
+    @Term("originalRequestData_contacts_bankAccount_clearAccountNumber")
+    @Crud("Createable,Readable,Updateable")
+    o String originalRequestData_contacts_bankAccount_clearAccountNumber optional   
 }

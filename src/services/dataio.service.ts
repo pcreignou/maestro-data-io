@@ -199,58 +199,58 @@ export const createRecord = async (req: IReq<CreateRecordBody>, res: IRes): Prom
     const { responseHeader_responseType } = bav;
     const { responseHeader_responseMessage } = bav;
     const { responseHeader_tenantID } = bav;
-    const { clientResponsePayload_orchestrationDecisions_0_sequenceId } = bav;
-    const { clientResponsePayload_orchestrationDecisions_0_decisionSource } = bav;
-    const { clientResponsePayload_orchestrationDecisions_0_decision } = bav;
-    const { clientResponsePayload_orchestrationDecisions_0_decisionReasons_0 } = bav;
-    const { clientResponsePayload_orchestrationDecisions_0_score } = bav;
-    const { clientResponsePayload_orchestrationDecisions_0_decisionText } = bav;
-    const { clientResponsePayload_orchestrationDecisions_0_nextAction } = bav;
-    const { clientResponsePayload_orchestrationDecisions_0_decisionTime } = bav;
-    const { clientResponsePayload_decisionElements_0_serviceName } = bav;
-    const { clientResponsePayload_decisionElements_0_applicantId } = bav;
-    const { clientResponsePayload_decisionElements_0_warningsErrors } = bav;
-    const { clientResponsePayload_decisionElements_0_otherData_branchData_0_institutionName } = bav;
-    const { clientResponsePayload_decisionElements_0_otherData_branchData_0_branchName } = bav;
-    const { clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_1 } = bav;
-    const { clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_2 } = bav;
-    const { originalRequestData_application_applicants_0_id } = bav;
-    const { originalRequestData_application_applicants_0_contactId } = bav;
+    const { clientResponsePayload_orchestrationDecisions_sequenceId } = bav;
+    const { clientResponsePayload_orchestrationDecisions_decisionSource } = bav;
+    const { clientResponsePayload_orchestrationDecisions_decision } = bav;
+    const { clientResponsePayload_orchestrationDecisions_decisionReasons_0 } = bav;
+    const { clientResponsePayload_orchestrationDecisions_score } = bav;
+    const { clientResponsePayload_orchestrationDecisions_decisionText } = bav;
+    const { clientResponsePayload_orchestrationDecisions_nextAction } = bav;
+    const { clientResponsePayload_orchestrationDecisions_decisionTime } = bav;
+    const { clientResponsePayload_decisionElements_serviceName } = bav;
+    const { clientResponsePayload_decisionElements_applicantId } = bav;
+    const { clientResponsePayload_decisionElements_warningsErrors } = bav;
+    const { clientResponsePayload_decisionElements_otherData_branchData_institutionName } = bav;
+    const { clientResponsePayload_decisionElements_otherData_branchData_branchName } = bav;
+    const { clientResponsePayload_decisionElements_otherData_branchData_address_1 } = bav;
+    const { clientResponsePayload_decisionElements_otherData_branchData_address_2 } = bav;
+    const { originalRequestData_application_applicants_id } = bav;
+    const { originalRequestData_application_applicants_contactId } = bav;
     const { originalRequestData_source } = bav;
-    const { originalRequestData_contacts_0_id } = bav;
-    const { originalRequestData_contacts_0_person_typeOfPerson } = bav;
-    const { originalRequestData_contacts_0_person_personDetails_dateOfBirth } = bav;
-    const { originalRequestData_contacts_0_person_names_0_id } = bav;
-    const { originalRequestData_contacts_0_person_names_0_title } = bav;
-    const { originalRequestData_contacts_0_person_names_0_firstName } = bav;
-    const { originalRequestData_contacts_0_person_names_0_middleNames } = bav;
-    const { originalRequestData_contacts_0_person_names_0_surName } = bav;
-    const { originalRequestData_contacts_0_person_names_0_nameSuffix } = bav;
-    const { originalRequestData_contacts_0_addresses_0_id } = bav;
-    const { originalRequestData_contacts_0_addresses_0_addressIdentifier } = bav;
-    const { originalRequestData_contacts_0_addresses_0_indicator } = bav;
-    const { originalRequestData_contacts_0_addresses_0_addressType } = bav;
-    const { originalRequestData_contacts_0_addresses_0_poBoxNumber } = bav;
-    const { originalRequestData_contacts_0_addresses_0_subBuilding } = bav;
-    const { originalRequestData_contacts_0_addresses_0_buildingName } = bav;
-    const { originalRequestData_contacts_0_addresses_0_buildingNumber } = bav;
-    const { originalRequestData_contacts_0_addresses_0_street } = bav;
-    const { originalRequestData_contacts_0_addresses_0_subLocality } = bav;
-    const { originalRequestData_contacts_0_addresses_0_locality } = bav;
-    const { originalRequestData_contacts_0_addresses_0_postTown } = bav;
-    const { originalRequestData_contacts_0_addresses_0_county } = bav;
-    const { originalRequestData_contacts_0_addresses_0_postal } = bav;
-    const { originalRequestData_contacts_0_addresses_0_countryCode } = bav;
-    const { originalRequestData_contacts_0_addresses_0_residentFrom_fullDateFrom } = bav;
-    const { originalRequestData_contacts_0_addresses_0_residentFrom_yearFrom } = bav;
-    const { originalRequestData_contacts_0_addresses_0_residentFrom_monthFrom } = bav;
-    const { originalRequestData_contacts_0_addresses_0_residentFrom_dayFrom } = bav;
-    const { originalRequestData_contacts_0_addresses_0_residentTo_fullDateTo } = bav;
-    const { originalRequestData_contacts_0_addresses_0_residentTo_yearTo } = bav;
-    const { originalRequestData_contacts_0_addresses_0_residentTo_monthTo } = bav;
-    const { originalRequestData_contacts_0_addresses_0_residentTo_dayTo } = bav;
-    const { originalRequestData_contacts_0_bankAccount_sortCode } = bav;
-    const { originalRequestData_contacts_0_bankAccount_clearAccountNumber } = bav;
+    const { originalRequestData_contacts_id } = bav;
+    const { originalRequestData_contacts_person_typeOfPerson } = bav;
+    const { originalRequestData_contacts_person_personDetails_dateOfBirth } = bav;
+    const { originalRequestData_contacts_person_names_id } = bav;
+    const { originalRequestData_contacts_person_names_title } = bav;
+    const { originalRequestData_contacts_person_names_firstName } = bav;
+    const { originalRequestData_contacts_person_names_middleNames } = bav;
+    const { originalRequestData_contacts_person_names_surName } = bav;
+    const { originalRequestData_contacts_person_names_nameSuffix } = bav;
+    const { originalRequestData_contacts_addresses_id } = bav;
+    const { originalRequestData_contacts_addresses_addressIdentifier } = bav;
+    const { originalRequestData_contacts_addresses_indicator } = bav;
+    const { originalRequestData_contacts_addresses_addressType } = bav;
+    const { originalRequestData_contacts_addresses_poBoxNumber } = bav;
+    const { originalRequestData_contacts_addresses_subBuilding } = bav;
+    const { originalRequestData_contacts_addresses_buildingName } = bav;
+    const { originalRequestData_contacts_addresses_buildingNumber } = bav;
+    const { originalRequestData_contacts_addresses_street } = bav;
+    const { originalRequestData_contacts_addresses_subLocality } = bav;
+    const { originalRequestData_contacts_addresses_locality } = bav;
+    const { originalRequestData_contacts_addresses_postTown } = bav;
+    const { originalRequestData_contacts_addresses_county } = bav;
+    const { originalRequestData_contacts_addresses_postal } = bav;
+    const { originalRequestData_contacts_addresses_countryCode } = bav;
+    const { originalRequestData_contacts_addresses_residentFrom_fullDateFrom } = bav;
+    const { originalRequestData_contacts_addresses_residentFrom_yearFrom } = bav;
+    const { originalRequestData_contacts_addresses_residentFrom_monthFrom } = bav;
+    const { originalRequestData_contacts_addresses_residentFrom_dayFrom } = bav;
+    const { originalRequestData_contacts_addresses_residentTo_fullDateTo } = bav;
+    const { originalRequestData_contacts_addresses_residentTo_yearTo } = bav;
+    const { originalRequestData_contacts_addresses_residentTo_monthTo } = bav;
+    const { originalRequestData_contacts_addresses_residentTo_dayTo } = bav;
+    const { originalRequestData_contacts_bankAccount_sortCode } = bav;
+    const { originalRequestData_contacts_bankAccount_clearAccountNumber } = bav;
     
     const recordId = new mongoose.Types.ObjectId();
 
@@ -273,58 +273,58 @@ export const createRecord = async (req: IReq<CreateRecordBody>, res: IRes): Prom
        responseHeader_responseType ,
        responseHeader_responseMessage ,
        responseHeader_tenantID ,
-       clientResponsePayload_orchestrationDecisions_0_sequenceId ,
-       clientResponsePayload_orchestrationDecisions_0_decisionSource ,
-       clientResponsePayload_orchestrationDecisions_0_decision ,
-       clientResponsePayload_orchestrationDecisions_0_decisionReasons_0 ,
-       clientResponsePayload_orchestrationDecisions_0_score ,
-       clientResponsePayload_orchestrationDecisions_0_decisionText ,
-       clientResponsePayload_orchestrationDecisions_0_nextAction ,
-       clientResponsePayload_orchestrationDecisions_0_decisionTime ,
-       clientResponsePayload_decisionElements_0_serviceName ,
-       clientResponsePayload_decisionElements_0_applicantId ,
-       clientResponsePayload_decisionElements_0_warningsErrors ,
-       clientResponsePayload_decisionElements_0_otherData_branchData_0_institutionName ,
-       clientResponsePayload_decisionElements_0_otherData_branchData_0_branchName ,
-       clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_1 ,
-       clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_2 ,
-       originalRequestData_application_applicants_0_id ,
-       originalRequestData_application_applicants_0_contactId ,
+       clientResponsePayload_orchestrationDecisions_sequenceId ,
+       clientResponsePayload_orchestrationDecisions_decisionSource ,
+       clientResponsePayload_orchestrationDecisions_decision ,
+       clientResponsePayload_orchestrationDecisions_decisionReasons_0 ,
+       clientResponsePayload_orchestrationDecisions_score ,
+       clientResponsePayload_orchestrationDecisions_decisionText ,
+       clientResponsePayload_orchestrationDecisions_nextAction ,
+       clientResponsePayload_orchestrationDecisions_decisionTime ,
+       clientResponsePayload_decisionElements_serviceName ,
+       clientResponsePayload_decisionElements_applicantId ,
+       clientResponsePayload_decisionElements_warningsErrors ,
+       clientResponsePayload_decisionElements_otherData_branchData_institutionName ,
+       clientResponsePayload_decisionElements_otherData_branchData_branchName ,
+       clientResponsePayload_decisionElements_otherData_branchData_address_1 ,
+       clientResponsePayload_decisionElements_otherData_branchData_address_2 ,
+       originalRequestData_application_applicants_id ,
+       originalRequestData_application_applicants_contactId ,
        originalRequestData_source ,
-       originalRequestData_contacts_0_id ,
-       originalRequestData_contacts_0_person_typeOfPerson ,
-       originalRequestData_contacts_0_person_personDetails_dateOfBirth ,
-       originalRequestData_contacts_0_person_names_0_id ,
-       originalRequestData_contacts_0_person_names_0_title ,
-       originalRequestData_contacts_0_person_names_0_firstName ,
-       originalRequestData_contacts_0_person_names_0_middleNames ,
-       originalRequestData_contacts_0_person_names_0_surName ,
-       originalRequestData_contacts_0_person_names_0_nameSuffix ,
-       originalRequestData_contacts_0_addresses_0_id ,
-       originalRequestData_contacts_0_addresses_0_addressIdentifier ,
-       originalRequestData_contacts_0_addresses_0_indicator ,
-       originalRequestData_contacts_0_addresses_0_addressType ,
-       originalRequestData_contacts_0_addresses_0_poBoxNumber ,
-       originalRequestData_contacts_0_addresses_0_subBuilding ,
-       originalRequestData_contacts_0_addresses_0_buildingName ,
-       originalRequestData_contacts_0_addresses_0_buildingNumber ,
-       originalRequestData_contacts_0_addresses_0_street ,
-       originalRequestData_contacts_0_addresses_0_subLocality ,
-       originalRequestData_contacts_0_addresses_0_locality ,
-       originalRequestData_contacts_0_addresses_0_postTown ,
-       originalRequestData_contacts_0_addresses_0_county ,
-       originalRequestData_contacts_0_addresses_0_postal ,
-       originalRequestData_contacts_0_addresses_0_countryCode ,
-       originalRequestData_contacts_0_addresses_0_residentFrom_fullDateFrom ,
-       originalRequestData_contacts_0_addresses_0_residentFrom_yearFrom ,
-       originalRequestData_contacts_0_addresses_0_residentFrom_monthFrom ,
-       originalRequestData_contacts_0_addresses_0_residentFrom_dayFrom ,
-       originalRequestData_contacts_0_addresses_0_residentTo_fullDateTo ,
-       originalRequestData_contacts_0_addresses_0_residentTo_yearTo ,
-       originalRequestData_contacts_0_addresses_0_residentTo_monthTo ,
-       originalRequestData_contacts_0_addresses_0_residentTo_dayTo ,
-       originalRequestData_contacts_0_bankAccount_sortCode ,
-       originalRequestData_contacts_0_bankAccount_clearAccountNumber 
+       originalRequestData_contacts_id ,
+       originalRequestData_contacts_person_typeOfPerson ,
+       originalRequestData_contacts_person_personDetails_dateOfBirth ,
+       originalRequestData_contacts_person_names_id ,
+       originalRequestData_contacts_person_names_title ,
+       originalRequestData_contacts_person_names_firstName ,
+       originalRequestData_contacts_person_names_middleNames ,
+       originalRequestData_contacts_person_names_surName ,
+       originalRequestData_contacts_person_names_nameSuffix ,
+       originalRequestData_contacts_addresses_id ,
+       originalRequestData_contacts_addresses_addressIdentifier ,
+       originalRequestData_contacts_addresses_indicator ,
+       originalRequestData_contacts_addresses_addressType ,
+       originalRequestData_contacts_addresses_poBoxNumber ,
+       originalRequestData_contacts_addresses_subBuilding ,
+       originalRequestData_contacts_addresses_buildingName ,
+       originalRequestData_contacts_addresses_buildingNumber ,
+       originalRequestData_contacts_addresses_street ,
+       originalRequestData_contacts_addresses_subLocality ,
+       originalRequestData_contacts_addresses_locality ,
+       originalRequestData_contacts_addresses_postTown ,
+       originalRequestData_contacts_addresses_county ,
+       originalRequestData_contacts_addresses_postal ,
+       originalRequestData_contacts_addresses_countryCode ,
+       originalRequestData_contacts_addresses_residentFrom_fullDateFrom ,
+       originalRequestData_contacts_addresses_residentFrom_yearFrom ,
+       originalRequestData_contacts_addresses_residentFrom_monthFrom ,
+       originalRequestData_contacts_addresses_residentFrom_dayFrom ,
+       originalRequestData_contacts_addresses_residentTo_fullDateTo ,
+       originalRequestData_contacts_addresses_residentTo_yearTo ,
+       originalRequestData_contacts_addresses_residentTo_monthTo ,
+       originalRequestData_contacts_addresses_residentTo_dayTo ,
+       originalRequestData_contacts_bankAccount_sortCode ,
+       originalRequestData_contacts_bankAccount_clearAccountNumber 
     });
 
     const destination = convertSourceToTarget(item);

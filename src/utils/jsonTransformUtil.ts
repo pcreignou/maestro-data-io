@@ -21,14 +21,14 @@ export interface SourceJSON {
     responseHeader_responseType: string;
     responseHeader_responseMessage: string;
     responseHeader_tenantID: string;
-    clientResponsePayload_orchestrationDecisions_0_sequenceId: string;
-    clientResponsePayload_orchestrationDecisions_0_decisionSource: string;
-    clientResponsePayload_orchestrationDecisions_0_decision: string;
-    clientResponsePayload_orchestrationDecisions_0_decisionReasons_0: string;
-    clientResponsePayload_orchestrationDecisions_0_score: number;
-    clientResponsePayload_orchestrationDecisions_0_decisionText: string;
-    clientResponsePayload_orchestrationDecisions_0_nextAction: string;
-    clientResponsePayload_orchestrationDecisions_0_decisionTime: Date;
+    clientResponsePayload_orchestrationDecisions_sequenceId: string;
+    clientResponsePayload_orchestrationDecisions_decisionSource: string;
+    clientResponsePayload_orchestrationDecisions_decision: string;
+    clientResponsePayload_orchestrationDecisions_decisionReasons_0: string;
+    clientResponsePayload_orchestrationDecisions_score: number;
+    clientResponsePayload_orchestrationDecisions_decisionText: string;
+    clientResponsePayload_orchestrationDecisions_nextAction: string;
+    clientResponsePayload_orchestrationDecisions_decisionTime: Date;
     clientResponsePayload_orchestrationDecisions_1_sequenceId: string;
     clientResponsePayload_orchestrationDecisions_1_decisionSource: string;
     clientResponsePayload_orchestrationDecisions_1_decision: string;
@@ -45,38 +45,38 @@ export interface SourceJSON {
     clientResponsePayload_orchestrationDecisions_2_decisionText: string;
     clientResponsePayload_orchestrationDecisions_2_nextAction: string;
     clientResponsePayload_orchestrationDecisions_2_decisionTime: Date;
-    clientResponsePayload_decisionElements_0_serviceName: string;
-    clientResponsePayload_decisionElements_0_applicantId: string;
-    clientResponsePayload_decisionElements_0_warningsErrors: string[],
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_institutionName: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_branchName: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_1: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_2: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_3: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_4: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_5: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_telephoneNumber: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_subBranchNumber: string;
-    clientResponsePayload_decisionElements_0_decisions_0_element: string;
-    clientResponsePayload_decisionElements_0_decisions_0_value: string;
-    clientResponsePayload_decisionElements_0_decisions_1_element: string;
-    clientResponsePayload_decisionElements_0_decisions_1_value: string;
+    clientResponsePayload_decisionElements_serviceName: string;
+    clientResponsePayload_decisionElements_applicantId: string;
+    clientResponsePayload_decisionElements_warningsErrors: string[],
+    clientResponsePayload_decisionElements_otherData_branchData_institutionName: string;
+    clientResponsePayload_decisionElements_otherData_branchData_branchName: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_1: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_2: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_3: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_4: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_5: string;
+    clientResponsePayload_decisionElements_otherData_branchData_telephoneNumber: string;
+    clientResponsePayload_decisionElements_otherData_branchData_subBranchNumber: string;
+    clientResponsePayload_decisionElements_decisions_element: string;
+    clientResponsePayload_decisionElements_decisions_value: string;
+    clientResponsePayload_decisionElements_decisions_1_element: string;
+    clientResponsePayload_decisionElements_decisions_1_value: string;
     clientResponsePayload_decisionElements_1_serviceName: string;
     clientResponsePayload_decisionElements_1_applicantId: string;
     clientResponsePayload_decisionElements_1_appReference: string;
     clientResponsePayload_decisionElements_1_warningsErrors: string[];
     clientResponsePayload_decisionElements_1_otherData_response_uuid: string;
-    clientResponsePayload_decisionElements_1_auditLogs_0_eventType: string;
-    clientResponsePayload_decisionElements_1_auditLogs_0_eventDate: Date;
-    clientResponsePayload_decisionElements_1_auditLogs_0_eventOutcome: string;
+    clientResponsePayload_decisionElements_1_auditLogs_eventType: string;
+    clientResponsePayload_decisionElements_1_auditLogs_eventDate: Date;
+    clientResponsePayload_decisionElements_1_auditLogs_eventOutcome: string;
     clientResponsePayload_decisionElements_2_serviceName: string;
     clientResponsePayload_decisionElements_2_applicantId: string;
     clientResponsePayload_decisionElements_2_score: string;
     clientResponsePayload_decisionElements_2_appReference: string;
-    clientResponsePayload_decisionElements_2_rules_0_ruleId: string;
-    clientResponsePayload_decisionElements_2_rules_0_ruleName: string;
-    clientResponsePayload_decisionElements_2_rules_0_ruleScore: number;
-    clientResponsePayload_decisionElements_2_rules_0_ruleText: string;
+    clientResponsePayload_decisionElements_2_rules_ruleId: string;
+    clientResponsePayload_decisionElements_2_rules_ruleName: string;
+    clientResponsePayload_decisionElements_2_rules_ruleScore: number;
+    clientResponsePayload_decisionElements_2_rules_ruleText: string;
     clientResponsePayload_decisionElements_2_rules_1_ruleId: string;
     clientResponsePayload_decisionElements_2_rules_1_ruleName: string;
     clientResponsePayload_decisionElements_2_rules_1_ruleScore: number;
@@ -116,56 +116,56 @@ export interface SourceJSON {
     clientResponsePayload_decisionElements_2_rules_10_ruleName: string;
     clientResponsePayload_decisionElements_2_rules_10_ruleScore: number;
     clientResponsePayload_decisionElements_2_rules_10_ruleText: string;
-    clientResponsePayload_decisionElements_2_matches_0_name: string;
-    clientResponsePayload_decisionElements_2_matches_0_value: string;
+    clientResponsePayload_decisionElements_2_matches_name: string;
+    clientResponsePayload_decisionElements_2_matches_value: string;
     clientResponsePayload_decisionElements_2_matches_1_name: string;
     clientResponsePayload_decisionElements_2_matches_1_value: string;
-    clientResponsePayload_decisionElements_2_dataCounts_0_name: string;
-    clientResponsePayload_decisionElements_2_dataCounts_0_value: number;
+    clientResponsePayload_decisionElements_2_dataCounts_name: string;
+    clientResponsePayload_decisionElements_2_dataCounts_value: number;
     clientResponsePayload_decisionElements_2_dataCounts_1_name: string;
     clientResponsePayload_decisionElements_2_dataCounts_1_value: number;
     clientResponsePayload_decisionElements_2_dataCounts_2_name: string;
     clientResponsePayload_decisionElements_2_dataCounts_2_value: number;
-    clientResponsePayload_decisionElements_2_scores_0_name: string;
-    clientResponsePayload_decisionElements_2_scores_0_score: number;
+    clientResponsePayload_decisionElements_2_scores_name: string;
+    clientResponsePayload_decisionElements_2_scores_score: number;
     clientResponsePayload_decisionElements_2_scores_1_name: string;
-    originalRequestData_application_applicants_0_id: string;
-    originalRequestData_application_applicants_0_contactId: string;
+    originalRequestData_application_applicants_id: string;
+    originalRequestData_application_applicants_contactId: string;
     originalRequestData_source: string;
-    originalRequestData_contacts_0_id: string;
-    originalRequestData_contacts_0_person_typeOfPerson: string;
-    originalRequestData_contacts_0_person_personDetails_dateOfBirth: Date;
-    originalRequestData_contacts_0_person_names_0_id: string;
-    originalRequestData_contacts_0_person_names_0_title: string;
-    originalRequestData_contacts_0_person_names_0_firstName: string;
-    originalRequestData_contacts_0_person_names_0_middleNames: string;
-    originalRequestData_contacts_0_person_names_0_surName: string;
-    originalRequestData_contacts_0_person_names_0_nameSuffix: string;
-    originalRequestData_contacts_0_addresses_0_id: string;
-    originalRequestData_contacts_0_addresses_0_addressIdentifier: string;
-    originalRequestData_contacts_0_addresses_0_indicator: string;
-    originalRequestData_contacts_0_addresses_0_addressType: string;
-    originalRequestData_contacts_0_addresses_0_poBoxNumber: string;
-    originalRequestData_contacts_0_addresses_0_subBuilding: string;
-    originalRequestData_contacts_0_addresses_0_buildingName: string;
-    originalRequestData_contacts_0_addresses_0_buildingNumber: string;
-    originalRequestData_contacts_0_addresses_0_street: string;
-    originalRequestData_contacts_0_addresses_0_subLocality: string;
-    originalRequestData_contacts_0_addresses_0_locality: string;
-    originalRequestData_contacts_0_addresses_0_postTown: string;
-    originalRequestData_contacts_0_addresses_0_county: string;
-    originalRequestData_contacts_0_addresses_0_postal: string;
-    originalRequestData_contacts_0_addresses_0_countryCode: string;
-    originalRequestData_contacts_0_addresses_0_residentFrom_fullDateFrom: Date;
-    originalRequestData_contacts_0_addresses_0_residentFrom_yearFrom: string;
-    originalRequestData_contacts_0_addresses_0_residentFrom_monthFrom: string;
-    originalRequestData_contacts_0_addresses_0_residentFrom_dayFrom: string;
-    originalRequestData_contacts_0_addresses_0_residentTo_fullDateTo: string;
-    originalRequestData_contacts_0_addresses_0_residentTo_yearTo: string;
-    originalRequestData_contacts_0_addresses_0_residentTo_monthTo: string;
-    originalRequestData_contacts_0_addresses_0_residentTo_dayTo: string;
-    originalRequestData_contacts_0_bankAccount_sortCode: string;
-    originalRequestData_contacts_0_bankAccount_clearAccountNumber: string;
+    originalRequestData_contacts_id: string;
+    originalRequestData_contacts_person_typeOfPerson: string;
+    originalRequestData_contacts_person_personDetails_dateOfBirth: Date;
+    originalRequestData_contacts_person_names_id: string;
+    originalRequestData_contacts_person_names_title: string;
+    originalRequestData_contacts_person_names_firstName: string;
+    originalRequestData_contacts_person_names_middleNames: string;
+    originalRequestData_contacts_person_names_surName: string;
+    originalRequestData_contacts_person_names_nameSuffix: string;
+    originalRequestData_contacts_addresses_id: string;
+    originalRequestData_contacts_addresses_addressIdentifier: string;
+    originalRequestData_contacts_addresses_indicator: string;
+    originalRequestData_contacts_addresses_addressType: string;
+    originalRequestData_contacts_addresses_poBoxNumber: string;
+    originalRequestData_contacts_addresses_subBuilding: string;
+    originalRequestData_contacts_addresses_buildingName: string;
+    originalRequestData_contacts_addresses_buildingNumber: string;
+    originalRequestData_contacts_addresses_street: string;
+    originalRequestData_contacts_addresses_subLocality: string;
+    originalRequestData_contacts_addresses_locality: string;
+    originalRequestData_contacts_addresses_postTown: string;
+    originalRequestData_contacts_addresses_county: string;
+    originalRequestData_contacts_addresses_postal: string;
+    originalRequestData_contacts_addresses_countryCode: string;
+    originalRequestData_contacts_addresses_residentFrom_fullDateFrom: Date;
+    originalRequestData_contacts_addresses_residentFrom_yearFrom: string;
+    originalRequestData_contacts_addresses_residentFrom_monthFrom: string;
+    originalRequestData_contacts_addresses_residentFrom_dayFrom: string;
+    originalRequestData_contacts_addresses_residentTo_fullDateTo: string;
+    originalRequestData_contacts_addresses_residentTo_yearTo: string;
+    originalRequestData_contacts_addresses_residentTo_monthTo: string;
+    originalRequestData_contacts_addresses_residentTo_dayTo: string;
+    originalRequestData_contacts_bankAccount_sortCode: string;
+    originalRequestData_contacts_bankAccount_clearAccountNumber: string;
 }
 
 export interface TargetJSON {
@@ -399,10 +399,10 @@ export function convertSourceToTarget(source: SourceJSON): TargetJSON {
                         names: [
                             {
                                 id: "MAINPERSONNAME_1",
-                                title: source.originalRequestData_contacts_0_person_names_0_title, // Placeholder for title
-                                firstName: source.originalRequestData_contacts_0_person_names_0_firstName,
-                                middleNames: source.originalRequestData_contacts_0_person_names_0_middleNames,
-                                surName: source.originalRequestData_contacts_0_person_names_0_surName,
+                                title: source.originalRequestData_contacts_person_names_title, // Placeholder for title
+                                firstName: source.originalRequestData_contacts_person_names_firstName,
+                                middleNames: source.originalRequestData_contacts_person_names_middleNames,
+                                surName: source.originalRequestData_contacts_person_names_surName,
                                 nameSuffix: "",
                             },
                         ],
@@ -410,20 +410,20 @@ export function convertSourceToTarget(source: SourceJSON): TargetJSON {
                     addresses: [
                         {
                             id: "MAINAPPADDRESS_1",
-                            addressIdentifier: source.originalRequestData_contacts_0_addresses_0_addressIdentifier,
+                            addressIdentifier: source.originalRequestData_contacts_addresses_addressIdentifier,
                             indicator: "RESIDENTIAL",
                             addressType: "CURRENT",
                             poBoxNumber: "",
                             subBuilding: "",
-                            buildingName: source.originalRequestData_contacts_0_addresses_0_buildingName,
+                            buildingName: source.originalRequestData_contacts_addresses_buildingName,
                             buildingNumber: "76", // Placeholder as source JSON does not provide this
-                            street: source.originalRequestData_contacts_0_addresses_0_street, // Placeholder as source JSON does not provide this
+                            street: source.originalRequestData_contacts_addresses_street, // Placeholder as source JSON does not provide this
                             street2: "",
                             subLocality: "",
                             locality: "",
-                            postTown: source.originalRequestData_contacts_0_addresses_0_postTown, // Placeholder as source JSON does not provide this
+                            postTown: source.originalRequestData_contacts_addresses_postTown, // Placeholder as source JSON does not provide this
                             county: "",
-                            postal: source.originalRequestData_contacts_0_addresses_0_postal, // Placeholder as source JSON does not provide this
+                            postal: source.originalRequestData_contacts_addresses_postal, // Placeholder as source JSON does not provide this
                             countryCode: "GBR", // Assuming fixed value
                             residentFrom: {
                                 fullDateFrom: "2011-04-28",
@@ -440,8 +440,8 @@ export function convertSourceToTarget(source: SourceJSON): TargetJSON {
                         },
                     ],
                     bankAccount: {
-                        sortCode: source.originalRequestData_contacts_0_bankAccount_sortCode,
-                        clearAccountNumber: source.originalRequestData_contacts_0_bankAccount_clearAccountNumber,
+                        sortCode: source.originalRequestData_contacts_bankAccount_sortCode,
+                        clearAccountNumber: source.originalRequestData_contacts_bankAccount_clearAccountNumber,
                     },
                 },
             ],

@@ -90,14 +90,14 @@ export interface IAccountVerification{
     responseHeader_responseType: string;
     responseHeader_responseMessage: string;
     responseHeader_tenantID: string;
-    clientResponsePayload_orchestrationDecisions_0_sequenceId: string;
-    clientResponsePayload_orchestrationDecisions_0_decisionSource: string;
-    clientResponsePayload_orchestrationDecisions_0_decision: string;
-    clientResponsePayload_orchestrationDecisions_0_decisionReasons_0: string;
-    clientResponsePayload_orchestrationDecisions_0_score: number;
-    clientResponsePayload_orchestrationDecisions_0_decisionText: string;
-    clientResponsePayload_orchestrationDecisions_0_nextAction: string;
-    clientResponsePayload_orchestrationDecisions_0_decisionTime: Date;
+    clientResponsePayload_orchestrationDecisions_sequenceId: string;
+    clientResponsePayload_orchestrationDecisions_decisionSource: string;
+    clientResponsePayload_orchestrationDecisions_decision: string;
+    clientResponsePayload_orchestrationDecisions_decisionReasons_0: string;
+    clientResponsePayload_orchestrationDecisions_score: number;
+    clientResponsePayload_orchestrationDecisions_decisionText: string;
+    clientResponsePayload_orchestrationDecisions_nextAction: string;
+    clientResponsePayload_orchestrationDecisions_decisionTime: Date;
     clientResponsePayload_orchestrationDecisions_1_sequenceId: string;
     clientResponsePayload_orchestrationDecisions_1_decisionSource: string;
     clientResponsePayload_orchestrationDecisions_1_decision: string;
@@ -114,38 +114,38 @@ export interface IAccountVerification{
     clientResponsePayload_orchestrationDecisions_2_decisionText: string;
     clientResponsePayload_orchestrationDecisions_2_nextAction: string;
     clientResponsePayload_orchestrationDecisions_2_decisionTime: Date;
-    clientResponsePayload_decisionElements_0_serviceName: string;
-    clientResponsePayload_decisionElements_0_applicantId: string;
-    clientResponsePayload_decisionElements_0_warningsErrors: string[],
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_institutionName: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_branchName: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_1: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_2: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_3: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_4: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_5: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_telephoneNumber: string;
-    clientResponsePayload_decisionElements_0_otherData_branchData_0_subBranchNumber: string;
-    clientResponsePayload_decisionElements_0_decisions_0_element: string;
-    clientResponsePayload_decisionElements_0_decisions_0_value: string;
-    clientResponsePayload_decisionElements_0_decisions_1_element: string;
-    clientResponsePayload_decisionElements_0_decisions_1_value: string;
+    clientResponsePayload_decisionElements_serviceName: string;
+    clientResponsePayload_decisionElements_applicantId: string;
+    clientResponsePayload_decisionElements_warningsErrors: string[],
+    clientResponsePayload_decisionElements_otherData_branchData_institutionName: string;
+    clientResponsePayload_decisionElements_otherData_branchData_branchName: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_1: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_2: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_3: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_4: string;
+    clientResponsePayload_decisionElements_otherData_branchData_address_5: string;
+    clientResponsePayload_decisionElements_otherData_branchData_telephoneNumber: string;
+    clientResponsePayload_decisionElements_otherData_branchData_subBranchNumber: string;
+    clientResponsePayload_decisionElements_decisions_element: string;
+    clientResponsePayload_decisionElements_decisions_value: string;
+    clientResponsePayload_decisionElements_decisions_1_element: string;
+    clientResponsePayload_decisionElements_decisions_1_value: string;
     clientResponsePayload_decisionElements_1_serviceName: string;
     clientResponsePayload_decisionElements_1_applicantId: string;
     clientResponsePayload_decisionElements_1_appReference: string;
     clientResponsePayload_decisionElements_1_warningsErrors: string[];
     clientResponsePayload_decisionElements_1_otherData_response_uuid: string;
-    clientResponsePayload_decisionElements_1_auditLogs_0_eventType: string;
-    clientResponsePayload_decisionElements_1_auditLogs_0_eventDate: Date;
-    clientResponsePayload_decisionElements_1_auditLogs_0_eventOutcome: string;
+    clientResponsePayload_decisionElements_1_auditLogs_eventType: string;
+    clientResponsePayload_decisionElements_1_auditLogs_eventDate: Date;
+    clientResponsePayload_decisionElements_1_auditLogs_eventOutcome: string;
     clientResponsePayload_decisionElements_2_serviceName: string;
     clientResponsePayload_decisionElements_2_applicantId: string;
     clientResponsePayload_decisionElements_2_score: string;
     clientResponsePayload_decisionElements_2_appReference: string;
-    clientResponsePayload_decisionElements_2_rules_0_ruleId: string;
-    clientResponsePayload_decisionElements_2_rules_0_ruleName: string;
-    clientResponsePayload_decisionElements_2_rules_0_ruleScore: number;
-    clientResponsePayload_decisionElements_2_rules_0_ruleText: string;
+    clientResponsePayload_decisionElements_2_rules_ruleId: string;
+    clientResponsePayload_decisionElements_2_rules_ruleName: string;
+    clientResponsePayload_decisionElements_2_rules_ruleScore: number;
+    clientResponsePayload_decisionElements_2_rules_ruleText: string;
     clientResponsePayload_decisionElements_2_rules_1_ruleId: string;
     clientResponsePayload_decisionElements_2_rules_1_ruleName: string;
     clientResponsePayload_decisionElements_2_rules_1_ruleScore: number;
@@ -185,56 +185,56 @@ export interface IAccountVerification{
     clientResponsePayload_decisionElements_2_rules_10_ruleName: string;
     clientResponsePayload_decisionElements_2_rules_10_ruleScore: number;
     clientResponsePayload_decisionElements_2_rules_10_ruleText: string;
-    clientResponsePayload_decisionElements_2_matches_0_name: string;
-    clientResponsePayload_decisionElements_2_matches_0_value: string;
+    clientResponsePayload_decisionElements_2_matches_name: string;
+    clientResponsePayload_decisionElements_2_matches_value: string;
     clientResponsePayload_decisionElements_2_matches_1_name: string;
     clientResponsePayload_decisionElements_2_matches_1_value: string;
-    clientResponsePayload_decisionElements_2_dataCounts_0_name: string;
-    clientResponsePayload_decisionElements_2_dataCounts_0_value: number;
+    clientResponsePayload_decisionElements_2_dataCounts_name: string;
+    clientResponsePayload_decisionElements_2_dataCounts_value: number;
     clientResponsePayload_decisionElements_2_dataCounts_1_name: string;
     clientResponsePayload_decisionElements_2_dataCounts_1_value: number;
     clientResponsePayload_decisionElements_2_dataCounts_2_name: string;
     clientResponsePayload_decisionElements_2_dataCounts_2_value: number;
-    clientResponsePayload_decisionElements_2_scores_0_name: string;
-    clientResponsePayload_decisionElements_2_scores_0_score: number;
+    clientResponsePayload_decisionElements_2_scores_name: string;
+    clientResponsePayload_decisionElements_2_scores_score: number;
     clientResponsePayload_decisionElements_2_scores_1_name: string;
-    originalRequestData_application_applicants_0_id: string;
-    originalRequestData_application_applicants_0_contactId: string;
+    originalRequestData_application_applicants_id: string;
+    originalRequestData_application_applicants_contactId: string;
     originalRequestData_source: string;
-    originalRequestData_contacts_0_id: string;
-    originalRequestData_contacts_0_person_typeOfPerson: string;
-    originalRequestData_contacts_0_person_personDetails_dateOfBirth: Date;
-    originalRequestData_contacts_0_person_names_0_id: string;
-    originalRequestData_contacts_0_person_names_0_title: string;
-    originalRequestData_contacts_0_person_names_0_firstName: string;
-    originalRequestData_contacts_0_person_names_0_middleNames: string;
-    originalRequestData_contacts_0_person_names_0_surName: string;
-    originalRequestData_contacts_0_person_names_0_nameSuffix: string;
-    originalRequestData_contacts_0_addresses_0_id: string;
-    originalRequestData_contacts_0_addresses_0_addressIdentifier: string;
-    originalRequestData_contacts_0_addresses_0_indicator: string;
-    originalRequestData_contacts_0_addresses_0_addressType: string;
-    originalRequestData_contacts_0_addresses_0_poBoxNumber: string;
-    originalRequestData_contacts_0_addresses_0_subBuilding: string;
-    originalRequestData_contacts_0_addresses_0_buildingName: string;
-    originalRequestData_contacts_0_addresses_0_buildingNumber: string;
-    originalRequestData_contacts_0_addresses_0_street: string;
-    originalRequestData_contacts_0_addresses_0_subLocality: string;
-    originalRequestData_contacts_0_addresses_0_locality: string;
-    originalRequestData_contacts_0_addresses_0_postTown: string;
-    originalRequestData_contacts_0_addresses_0_county: string;
-    originalRequestData_contacts_0_addresses_0_postal: string;
-    originalRequestData_contacts_0_addresses_0_countryCode: string;
-    originalRequestData_contacts_0_addresses_0_residentFrom_fullDateFrom: Date;
-    originalRequestData_contacts_0_addresses_0_residentFrom_yearFrom: string;
-    originalRequestData_contacts_0_addresses_0_residentFrom_monthFrom: string;
-    originalRequestData_contacts_0_addresses_0_residentFrom_dayFrom: string;
-    originalRequestData_contacts_0_addresses_0_residentTo_fullDateTo: string;
-    originalRequestData_contacts_0_addresses_0_residentTo_yearTo: string;
-    originalRequestData_contacts_0_addresses_0_residentTo_monthTo: string;
-    originalRequestData_contacts_0_addresses_0_residentTo_dayTo: string;
-    originalRequestData_contacts_0_bankAccount_sortCode: string;
-    originalRequestData_contacts_0_bankAccount_clearAccountNumber: string;
+    originalRequestData_contacts_id: string;
+    originalRequestData_contacts_person_typeOfPerson: string;
+    originalRequestData_contacts_person_personDetails_dateOfBirth: Date;
+    originalRequestData_contacts_person_names_id: string;
+    originalRequestData_contacts_person_names_title: string;
+    originalRequestData_contacts_person_names_firstName: string;
+    originalRequestData_contacts_person_names_middleNames: string;
+    originalRequestData_contacts_person_names_surName: string;
+    originalRequestData_contacts_person_names_nameSuffix: string;
+    originalRequestData_contacts_addresses_id: string;
+    originalRequestData_contacts_addresses_addressIdentifier: string;
+    originalRequestData_contacts_addresses_indicator: string;
+    originalRequestData_contacts_addresses_addressType: string;
+    originalRequestData_contacts_addresses_poBoxNumber: string;
+    originalRequestData_contacts_addresses_subBuilding: string;
+    originalRequestData_contacts_addresses_buildingName: string;
+    originalRequestData_contacts_addresses_buildingNumber: string;
+    originalRequestData_contacts_addresses_street: string;
+    originalRequestData_contacts_addresses_subLocality: string;
+    originalRequestData_contacts_addresses_locality: string;
+    originalRequestData_contacts_addresses_postTown: string;
+    originalRequestData_contacts_addresses_county: string;
+    originalRequestData_contacts_addresses_postal: string;
+    originalRequestData_contacts_addresses_countryCode: string;
+    originalRequestData_contacts_addresses_residentFrom_fullDateFrom: Date;
+    originalRequestData_contacts_addresses_residentFrom_yearFrom: string;
+    originalRequestData_contacts_addresses_residentFrom_monthFrom: string;
+    originalRequestData_contacts_addresses_residentFrom_dayFrom: string;
+    originalRequestData_contacts_addresses_residentTo_fullDateTo: string;
+    originalRequestData_contacts_addresses_residentTo_yearTo: string;
+    originalRequestData_contacts_addresses_residentTo_monthTo: string;
+    originalRequestData_contacts_addresses_residentTo_dayTo: string;
+    originalRequestData_contacts_bankAccount_sortCode: string;
+    originalRequestData_contacts_bankAccount_clearAccountNumber: string;
 }
 
 export interface IAccountVerificationModel extends IAccountVerification, Document{
@@ -291,28 +291,28 @@ const AccountVerificationSchema: Schema = new Schema(
  responseHeader_tenantID : {
    type :  String 
     },
- clientResponsePayload_orchestrationDecisions_0_sequenceId : {
+ clientResponsePayload_orchestrationDecisions_sequenceId : {
    type :  String
     },
- clientResponsePayload_orchestrationDecisions_0_decisionSource : {
+ clientResponsePayload_orchestrationDecisions_decisionSource : {
    type :  String 
     },
- clientResponsePayload_orchestrationDecisions_0_decision : {
+ clientResponsePayload_orchestrationDecisions_decision : {
    type :  String 
     },
- clientResponsePayload_orchestrationDecisions_0_decisionReasons_0 : {
+ clientResponsePayload_orchestrationDecisions_decisionReasons_0 : {
    type :  String 
     },
- clientResponsePayload_orchestrationDecisions_0_score : {
+ clientResponsePayload_orchestrationDecisions_score : {
    type :  Number 
     },
- clientResponsePayload_orchestrationDecisions_0_decisionText : {
+ clientResponsePayload_orchestrationDecisions_decisionText : {
    type :  String 
     },
- clientResponsePayload_orchestrationDecisions_0_nextAction : {
+ clientResponsePayload_orchestrationDecisions_nextAction : {
    type :  String 
     },
- clientResponsePayload_orchestrationDecisions_0_decisionTime : {
+ clientResponsePayload_orchestrationDecisions_decisionTime : {
    type : String
     },
  clientResponsePayload_orchestrationDecisions_1_sequenceId : {
@@ -363,52 +363,52 @@ const AccountVerificationSchema: Schema = new Schema(
  clientResponsePayload_orchestrationDecisions_2_decisionTime : {
    type :  Date 
     },
- clientResponsePayload_decisionElements_0_serviceName : {
+ clientResponsePayload_decisionElements_serviceName : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_applicantId : {
+ clientResponsePayload_decisionElements_applicantId : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_warningsErrors : {
+ clientResponsePayload_decisionElements_warningsErrors : {
    type :  Array 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_institutionName : {
+ clientResponsePayload_decisionElements_otherData_branchData_institutionName : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_branchName : {
+ clientResponsePayload_decisionElements_otherData_branchData_branchName : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_1 : {
+ clientResponsePayload_decisionElements_otherData_branchData_address_1 : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_2 : {
+ clientResponsePayload_decisionElements_otherData_branchData_address_2 : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_3 : {
+ clientResponsePayload_decisionElements_otherData_branchData_address_3 : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_4 : {
+ clientResponsePayload_decisionElements_otherData_branchData_address_4 : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_5 : {
+ clientResponsePayload_decisionElements_otherData_branchData_address_5 : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_telephoneNumber : {
+ clientResponsePayload_decisionElements_otherData_branchData_telephoneNumber : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_otherData_branchData_0_subBranchNumber : {
+ clientResponsePayload_decisionElements_otherData_branchData_subBranchNumber : {
    type :  Number 
     },
- clientResponsePayload_decisionElements_0_decisions_0_element : {
+ clientResponsePayload_decisionElements_decisions_element : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_decisions_0_value : {
+ clientResponsePayload_decisionElements_decisions_value : {
    type :  String
     },
- clientResponsePayload_decisionElements_0_decisions_1_element : {
+ clientResponsePayload_decisionElements_decisions_1_element : {
    type :  String 
     },
- clientResponsePayload_decisionElements_0_decisions_1_value : {
+ clientResponsePayload_decisionElements_decisions_1_value : {
    type :  String 
     },
  clientResponsePayload_decisionElements_1_serviceName : {
@@ -426,13 +426,13 @@ const AccountVerificationSchema: Schema = new Schema(
  clientResponsePayload_decisionElements_1_otherData_response_uuid : {
    type :  String 
     },
- clientResponsePayload_decisionElements_1_auditLogs_0_eventType : {
+ clientResponsePayload_decisionElements_1_auditLogs_eventType : {
    type :  String 
     },
- clientResponsePayload_decisionElements_1_auditLogs_0_eventDate : {
+ clientResponsePayload_decisionElements_1_auditLogs_eventDate : {
    type :  Date 
     },
- clientResponsePayload_decisionElements_1_auditLogs_0_eventOutcome : {
+ clientResponsePayload_decisionElements_1_auditLogs_eventOutcome : {
    type :  String 
     },
  clientResponsePayload_decisionElements_2_serviceName : {
@@ -447,16 +447,16 @@ const AccountVerificationSchema: Schema = new Schema(
  clientResponsePayload_decisionElements_2_appReference : {
    type :  String 
     },
- clientResponsePayload_decisionElements_2_rules_0_ruleId : {
+ clientResponsePayload_decisionElements_2_rules_ruleId : {
    type :  String 
     },
- clientResponsePayload_decisionElements_2_rules_0_ruleName : {
+ clientResponsePayload_decisionElements_2_rules_ruleName : {
    type :  String 
     },
- clientResponsePayload_decisionElements_2_rules_0_ruleScore : {
+ clientResponsePayload_decisionElements_2_rules_ruleScore : {
    type :  Number 
     },
- clientResponsePayload_decisionElements_2_rules_0_ruleText : {
+ clientResponsePayload_decisionElements_2_rules_ruleText : {
    type :  String 
     },
  clientResponsePayload_decisionElements_2_rules_1_ruleId : {
@@ -579,10 +579,10 @@ const AccountVerificationSchema: Schema = new Schema(
  clientResponsePayload_decisionElements_2_rules_10_ruleText : {
    type :  String 
     },
- clientResponsePayload_decisionElements_2_matches_0_name : {
+ clientResponsePayload_decisionElements_2_matches_name : {
    type :  String 
     },
- clientResponsePayload_decisionElements_2_matches_0_value : {
+ clientResponsePayload_decisionElements_2_matches_value : {
    type :  String 
     },
  clientResponsePayload_decisionElements_2_matches_1_name : {
@@ -591,10 +591,10 @@ const AccountVerificationSchema: Schema = new Schema(
  clientResponsePayload_decisionElements_2_matches_1_value : {
    type :  String 
     },
- clientResponsePayload_decisionElements_2_dataCounts_0_name : {
+ clientResponsePayload_decisionElements_2_dataCounts_name : {
    type :  String 
     },
- clientResponsePayload_decisionElements_2_dataCounts_0_value : {
+ clientResponsePayload_decisionElements_2_dataCounts_value : {
    type :  Number 
     },
  clientResponsePayload_decisionElements_2_dataCounts_1_name : {
@@ -609,10 +609,10 @@ const AccountVerificationSchema: Schema = new Schema(
  clientResponsePayload_decisionElements_2_dataCounts_2_value : {
    type :  Number 
     },
- clientResponsePayload_decisionElements_2_scores_0_name : {
+ clientResponsePayload_decisionElements_2_scores_name : {
    type :  String 
     },
- clientResponsePayload_decisionElements_2_scores_0_score : {
+ clientResponsePayload_decisionElements_2_scores_score : {
    type :  Number 
     },
  clientResponsePayload_decisionElements_2_scores_1_name : {
@@ -621,118 +621,118 @@ const AccountVerificationSchema: Schema = new Schema(
  clientResponsePayload_decisionElements_2_scores_1_score : {
    type :  Number 
     },
- originalRequestData_application_applicants_0_id : {
+ originalRequestData_application_applicants_id : {
    type :  String 
     },
- originalRequestData_application_applicants_0_contactId : {
+ originalRequestData_application_applicants_contactId : {
    type :  String 
     },
  originalRequestData_source : {
    type :  String 
     },
- originalRequestData_contacts_0_id : {
+ originalRequestData_contacts_id : {
    type :  String 
     },
- originalRequestData_contacts_0_person_typeOfPerson : {
+ originalRequestData_contacts_person_typeOfPerson : {
    type :  String 
     },
- originalRequestData_contacts_0_person_personDetails_dateOfBirth : {
+ originalRequestData_contacts_person_personDetails_dateOfBirth : {
    type :  String 
     },
- originalRequestData_contacts_0_person_names_0_id : {
+ originalRequestData_contacts_person_names_id : {
    type :  String 
     },
- originalRequestData_contacts_0_person_names_0_title : {
+ originalRequestData_contacts_person_names_title : {
    type :  String 
     },
- originalRequestData_contacts_0_person_names_0_firstName : {
+ originalRequestData_contacts_person_names_firstName : {
    type :  String 
     },
- originalRequestData_contacts_0_person_names_0_middleNames : {
+ originalRequestData_contacts_person_names_middleNames : {
    type :  String 
     },
- originalRequestData_contacts_0_person_names_0_surName : {
+ originalRequestData_contacts_person_names_surName : {
    type :  String 
     },
- originalRequestData_contacts_0_person_names_0_nameSuffix : {
+ originalRequestData_contacts_person_names_nameSuffix : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_id : {
+ originalRequestData_contacts_addresses_id : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_addressIdentifier : {
+ originalRequestData_contacts_addresses_addressIdentifier : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_indicator : {
+ originalRequestData_contacts_addresses_indicator : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_addressType : {
+ originalRequestData_contacts_addresses_addressType : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_poBoxNumber : {
+ originalRequestData_contacts_addresses_poBoxNumber : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_subBuilding : {
+ originalRequestData_contacts_addresses_subBuilding : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_buildingName : {
+ originalRequestData_contacts_addresses_buildingName : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_buildingNumber : {
+ originalRequestData_contacts_addresses_buildingNumber : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_street : {
+ originalRequestData_contacts_addresses_street : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_street2 : {
+ originalRequestData_contacts_addresses_street2 : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_subLocality : {
+ originalRequestData_contacts_addresses_subLocality : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_locality : {
+ originalRequestData_contacts_addresses_locality : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_postTown : {
+ originalRequestData_contacts_addresses_postTown : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_county : {
+ originalRequestData_contacts_addresses_county : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_postal : {
+ originalRequestData_contacts_addresses_postal : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_countryCode : {
+ originalRequestData_contacts_addresses_countryCode : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_residentFrom_fullDateFrom : {
+ originalRequestData_contacts_addresses_residentFrom_fullDateFrom : {
    type :  Date 
     },
- originalRequestData_contacts_0_addresses_0_residentFrom_yearFrom : {
+ originalRequestData_contacts_addresses_residentFrom_yearFrom : {
    type :  String
     },
- originalRequestData_contacts_0_addresses_0_residentFrom_monthFrom : {
+ originalRequestData_contacts_addresses_residentFrom_monthFrom : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_residentFrom_dayFrom : {
+ originalRequestData_contacts_addresses_residentFrom_dayFrom : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_residentTo_fullDateTo : {
+ originalRequestData_contacts_addresses_residentTo_fullDateTo : {
    type :  String
     },
- originalRequestData_contacts_0_addresses_0_residentTo_yearTo : {
+ originalRequestData_contacts_addresses_residentTo_yearTo : {
    type : String 
     },
- originalRequestData_contacts_0_addresses_0_residentTo_monthTo : {
+ originalRequestData_contacts_addresses_residentTo_monthTo : {
    type :  String 
     },
- originalRequestData_contacts_0_addresses_0_residentTo_dayTo : {
+ originalRequestData_contacts_addresses_residentTo_dayTo : {
    type :  String 
     },
- originalRequestData_contacts_0_bankAccount_sortCode : {
+ originalRequestData_contacts_bankAccount_sortCode : {
    type :  String 
     },
- originalRequestData_contacts_0_bankAccount_clearAccountNumber : {
+ originalRequestData_contacts_bankAccount_clearAccountNumber : {
    type :  String
     }
   }

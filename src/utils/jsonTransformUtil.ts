@@ -369,9 +369,9 @@ export interface BankAccountVerificationResponse {
 export function convertSourceToTarget(source: SourceJSON): TargetJSON {
     return {
         header: {
-            tenantId: source.responseHeader_tenantId, // Value not found in source JSON
-            clientReferenceId: source.responseHeader_clientReferenceId,
-            requestType: source.responseHeader_requestType,
+            tenantId:"c7f8f55045884847b993d81ca8cdaf",
+            clientReferenceId: "TEST-123-124",
+            requestType: "BAVConsumer-Standard",
             expRequestId: source.responseHeader_expRequestId,
             messageTime: source.responseHeader_messageTime,
             txnId: "", // Placeholder as source JSON does not provide this

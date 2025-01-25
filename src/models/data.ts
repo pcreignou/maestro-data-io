@@ -78,7 +78,7 @@ export interface IAccountVerification{
     responseHeader_tenantId: string;
     responseHeader_clientReferenceId: string;
     responseHeader_expRequestId: string;
-    responseHeader_messageTime : Date;
+    responseHeader_messageTime : string;
     responseHeader_overallResponse_decision: string;
     responseHeader_overallResponse_decisionText: string;
     responseHeader_overallResponse_decisionReasons_0: string;

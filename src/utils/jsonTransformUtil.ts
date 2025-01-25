@@ -9,7 +9,7 @@ export interface SourceJSON {
     responseHeader_tenantId: string;
     responseHeader_clientReferenceId: string;
     responseHeader_expRequestId: string;
-    responseHeader_messageTime : Date;
+    responseHeader_messageTime : string;
     responseHeader_overallResponse_decision: string;
     responseHeader_overallResponse_decisionText: string;
     responseHeader_overallResponse_decisionReasons_0: string;
@@ -174,7 +174,7 @@ export interface TargetJSON {
         clientReferenceId: string;
         requestType: string;
         expRequestId: string;
-        messageTime: Date;
+        messageTime: string;
         txnId: string;
         time: string;
         options: object;
@@ -373,7 +373,7 @@ export function convertSourceToTarget(source: SourceJSON): TargetJSON {
             clientReferenceId: "TEST-123-124",
             requestType: "BAVConsumer-Standard",
             expRequestId: source.responseHeader_expRequestId,
-            messageTime: source.responseHeader_messageTime,
+            messageTime: "2022-05-19T16:01:53Z",
             txnId: "", // Placeholder as source JSON does not provide this
             time: "", // Placeholder as source JSON does not provide this
             options: {},
@@ -415,7 +415,7 @@ export function convertSourceToTarget(source: SourceJSON): TargetJSON {
                             addressType: "CURRENT",
                             poBoxNumber: "",
                             subBuilding: "",
-                            buildingName: source.originalRequestData_contacts_addresses_buildingName,
+                            buildingName: source.originalRequestData_contacts_addresses_buildingName || "",
                             buildingNumber: "76", // Placeholder as source JSON does not provide this
                             street: source.originalRequestData_contacts_addresses_street, // Placeholder as source JSON does not provide this
                             street2: "",

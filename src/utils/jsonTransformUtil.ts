@@ -372,7 +372,7 @@ export function convertSourceToTarget(source: SourceJSON): TargetJSON {
             tenantId:"c7f8f55045884847b993d81ca8cdaf",
             clientReferenceId: "TEST-123-124",
             requestType: "BAVConsumer-Standard",
-            expRequestId: source.responseHeader_expRequestId,
+            expRequestId: "",
             messageTime: "2022-05-19T16:01:53Z",
             txnId: "", // Placeholder as source JSON does not provide this
             time: "", // Placeholder as source JSON does not provide this

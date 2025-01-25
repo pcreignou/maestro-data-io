@@ -401,7 +401,7 @@ export function convertSourceToTarget(source: SourceJSON): TargetJSON {
                                 id: "MAINPERSONNAME_1",
                                 title: source.originalRequestData_contacts_person_names_title, // Placeholder for title
                                 firstName: source.originalRequestData_contacts_person_names_firstName,
-                                middleNames: source.originalRequestData_contacts_person_names_middleNames,
+                                middleNames: source.originalRequestData_contacts_person_names_middleNames || "",
                                 surName: source.originalRequestData_contacts_person_names_surName,
                                 nameSuffix: "",
                             },

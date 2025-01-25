@@ -7,9 +7,11 @@ import { ConceptDeclaration, ModelManager } from '@accordproject/concerto-core';
 import path from 'path';
 import { ModelManagerUtil } from 'src/utils/modelManagerUtil';
 import { ResultRehydrator } from 'src/utils/resultRehydrator';
-import Data, { IContact } from '../models/data';
+import Data , {BAV, IAccountVerification} from '../models/data';
 import mongoose from 'mongoose';
 import { convertChalkStringToMarkdown } from 'ts-command-line-args';
+import { BankAccountVerificationResponse, convertSourceToTarget, SourceJSON, TargetJSON } from 'src/utils/jsonTransformUtil';
+import { BAVSchema } from 'src/models/data';
 
 enum DECORATOR_NAMES {
   TERM = 'Term',
@@ -148,7 +150,7 @@ export const createRecord = async (req: IReq<CreateRecordBody>, res: IRes): Prom
     // (data as any)['Id'] = recordId;
     // db.appendToFile(data)
 
-    let contact: IContact = JSON.parse(JSON.stringify(data));
+   /* let contact: IContact = JSON.parse(JSON.stringify(data));
     console.log(contact);
 
     
@@ -169,9 +171,180 @@ export const createRecord = async (req: IReq<CreateRecordBody>, res: IRes): Prom
      addresses
      
 
+    });*/
+
+    let bav: IAccountVerification= JSON.parse(JSON.stringify(data));
+    console.debug('### bav:');
+    console.debug( bav);
+
+    
+    
+    /*const {originalRequestData_contacts_bankAccount_sortCode} = bav;
+    const {originalRequestData_contacts_bankAccount_clearAccountNumber} = bav;*/
+    
+    
+    const { responseHeader_requestType } = bav;
+    const { responseHeader_tenantId } = bav;
+    const { responseHeader_clientReferenceId } = bav;
+    const { responseHeader_expRequestId } = bav;
+    const { responseHeader_messageTime } = bav;
+    const { responseHeader_overallResponse_decision } = bav;
+    const { responseHeader_overallResponse_decisionText } = bav;
+    const { responseHeader_overallResponse_decisionReasons_0 } = bav;
+    const { responseHeader_overallResponse_decisionReasons_1 } = bav;
+    const { responseHeader_overallResponse_decisionReasons_2 } = bav;
+    const { responseHeader_overallResponse_recommendedNextActions } = bav;
+    const { responseHeader_overallResponse_spareObjects } = bav;
+    const { responseHeader_responseCode } = bav;
+    const { responseHeader_responseType } = bav;
+    const { responseHeader_responseMessage } = bav;
+    const { responseHeader_tenantID } = bav;
+    const { clientResponsePayload_orchestrationDecisions_0_sequenceId } = bav;
+    const { clientResponsePayload_orchestrationDecisions_0_decisionSource } = bav;
+    const { clientResponsePayload_orchestrationDecisions_0_decision } = bav;
+    const { clientResponsePayload_orchestrationDecisions_0_decisionReasons_0 } = bav;
+    const { clientResponsePayload_orchestrationDecisions_0_score } = bav;
+    const { clientResponsePayload_orchestrationDecisions_0_decisionText } = bav;
+    const { clientResponsePayload_orchestrationDecisions_0_nextAction } = bav;
+    const { clientResponsePayload_orchestrationDecisions_0_decisionTime } = bav;
+    const { clientResponsePayload_decisionElements_0_serviceName } = bav;
+    const { clientResponsePayload_decisionElements_0_applicantId } = bav;
+    const { clientResponsePayload_decisionElements_0_warningsErrors } = bav;
+    const { clientResponsePayload_decisionElements_0_otherData_branchData_0_institutionName } = bav;
+    const { clientResponsePayload_decisionElements_0_otherData_branchData_0_branchName } = bav;
+    const { clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_1 } = bav;
+    const { clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_2 } = bav;
+    const { originalRequestData_application_applicants_0_id } = bav;
+    const { originalRequestData_application_applicants_0_contactId } = bav;
+    const { originalRequestData_source } = bav;
+    const { originalRequestData_contacts_0_id } = bav;
+    const { originalRequestData_contacts_0_person_typeOfPerson } = bav;
+    const { originalRequestData_contacts_0_person_personDetails_dateOfBirth } = bav;
+    const { originalRequestData_contacts_0_person_names_0_id } = bav;
+    const { originalRequestData_contacts_0_person_names_0_title } = bav;
+    const { originalRequestData_contacts_0_person_names_0_firstName } = bav;
+    const { originalRequestData_contacts_0_person_names_0_middleNames } = bav;
+    const { originalRequestData_contacts_0_person_names_0_surName } = bav;
+    const { originalRequestData_contacts_0_person_names_0_nameSuffix } = bav;
+    const { originalRequestData_contacts_0_addresses_0_id } = bav;
+    const { originalRequestData_contacts_0_addresses_0_addressIdentifier } = bav;
+    const { originalRequestData_contacts_0_addresses_0_indicator } = bav;
+    const { originalRequestData_contacts_0_addresses_0_addressType } = bav;
+    const { originalRequestData_contacts_0_addresses_0_poBoxNumber } = bav;
+    const { originalRequestData_contacts_0_addresses_0_subBuilding } = bav;
+    const { originalRequestData_contacts_0_addresses_0_buildingName } = bav;
+    const { originalRequestData_contacts_0_addresses_0_buildingNumber } = bav;
+    const { originalRequestData_contacts_0_addresses_0_street } = bav;
+    const { originalRequestData_contacts_0_addresses_0_subLocality } = bav;
+    const { originalRequestData_contacts_0_addresses_0_locality } = bav;
+    const { originalRequestData_contacts_0_addresses_0_postTown } = bav;
+    const { originalRequestData_contacts_0_addresses_0_county } = bav;
+    const { originalRequestData_contacts_0_addresses_0_postal } = bav;
+    const { originalRequestData_contacts_0_addresses_0_countryCode } = bav;
+    const { originalRequestData_contacts_0_addresses_0_residentFrom_fullDateFrom } = bav;
+    const { originalRequestData_contacts_0_addresses_0_residentFrom_yearFrom } = bav;
+    const { originalRequestData_contacts_0_addresses_0_residentFrom_monthFrom } = bav;
+    const { originalRequestData_contacts_0_addresses_0_residentFrom_dayFrom } = bav;
+    const { originalRequestData_contacts_0_addresses_0_residentTo_fullDateTo } = bav;
+    const { originalRequestData_contacts_0_addresses_0_residentTo_yearTo } = bav;
+    const { originalRequestData_contacts_0_addresses_0_residentTo_monthTo } = bav;
+    const { originalRequestData_contacts_0_addresses_0_residentTo_dayTo } = bav;
+    const { originalRequestData_contacts_0_bankAccount_sortCode } = bav;
+    const { originalRequestData_contacts_0_bankAccount_clearAccountNumber } = bav;
+    
+    const recordId = new mongoose.Types.ObjectId();
+
+    const item = new Data({
+      _id: recordId,
+      typeName,
+       responseHeader_requestType ,
+       responseHeader_tenantId ,
+       responseHeader_clientReferenceId ,
+       responseHeader_expRequestId ,
+       responseHeader_messageTime ,
+       responseHeader_overallResponse_decision ,
+       responseHeader_overallResponse_decisionText ,
+       responseHeader_overallResponse_decisionReasons_0 ,
+       responseHeader_overallResponse_decisionReasons_1 ,
+       responseHeader_overallResponse_decisionReasons_2 ,
+       responseHeader_overallResponse_recommendedNextActions ,
+       responseHeader_overallResponse_spareObjects ,
+       responseHeader_responseCode ,
+       responseHeader_responseType ,
+       responseHeader_responseMessage ,
+       responseHeader_tenantID ,
+       clientResponsePayload_orchestrationDecisions_0_sequenceId ,
+       clientResponsePayload_orchestrationDecisions_0_decisionSource ,
+       clientResponsePayload_orchestrationDecisions_0_decision ,
+       clientResponsePayload_orchestrationDecisions_0_decisionReasons_0 ,
+       clientResponsePayload_orchestrationDecisions_0_score ,
+       clientResponsePayload_orchestrationDecisions_0_decisionText ,
+       clientResponsePayload_orchestrationDecisions_0_nextAction ,
+       clientResponsePayload_orchestrationDecisions_0_decisionTime ,
+       clientResponsePayload_decisionElements_0_serviceName ,
+       clientResponsePayload_decisionElements_0_applicantId ,
+       clientResponsePayload_decisionElements_0_warningsErrors ,
+       clientResponsePayload_decisionElements_0_otherData_branchData_0_institutionName ,
+       clientResponsePayload_decisionElements_0_otherData_branchData_0_branchName ,
+       clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_1 ,
+       clientResponsePayload_decisionElements_0_otherData_branchData_0_address_0_2 ,
+       originalRequestData_application_applicants_0_id ,
+       originalRequestData_application_applicants_0_contactId ,
+       originalRequestData_source ,
+       originalRequestData_contacts_0_id ,
+       originalRequestData_contacts_0_person_typeOfPerson ,
+       originalRequestData_contacts_0_person_personDetails_dateOfBirth ,
+       originalRequestData_contacts_0_person_names_0_id ,
+       originalRequestData_contacts_0_person_names_0_title ,
+       originalRequestData_contacts_0_person_names_0_firstName ,
+       originalRequestData_contacts_0_person_names_0_middleNames ,
+       originalRequestData_contacts_0_person_names_0_surName ,
+       originalRequestData_contacts_0_person_names_0_nameSuffix ,
+       originalRequestData_contacts_0_addresses_0_id ,
+       originalRequestData_contacts_0_addresses_0_addressIdentifier ,
+       originalRequestData_contacts_0_addresses_0_indicator ,
+       originalRequestData_contacts_0_addresses_0_addressType ,
+       originalRequestData_contacts_0_addresses_0_poBoxNumber ,
+       originalRequestData_contacts_0_addresses_0_subBuilding ,
+       originalRequestData_contacts_0_addresses_0_buildingName ,
+       originalRequestData_contacts_0_addresses_0_buildingNumber ,
+       originalRequestData_contacts_0_addresses_0_street ,
+       originalRequestData_contacts_0_addresses_0_subLocality ,
+       originalRequestData_contacts_0_addresses_0_locality ,
+       originalRequestData_contacts_0_addresses_0_postTown ,
+       originalRequestData_contacts_0_addresses_0_county ,
+       originalRequestData_contacts_0_addresses_0_postal ,
+       originalRequestData_contacts_0_addresses_0_countryCode ,
+       originalRequestData_contacts_0_addresses_0_residentFrom_fullDateFrom ,
+       originalRequestData_contacts_0_addresses_0_residentFrom_yearFrom ,
+       originalRequestData_contacts_0_addresses_0_residentFrom_monthFrom ,
+       originalRequestData_contacts_0_addresses_0_residentFrom_dayFrom ,
+       originalRequestData_contacts_0_addresses_0_residentTo_fullDateTo ,
+       originalRequestData_contacts_0_addresses_0_residentTo_yearTo ,
+       originalRequestData_contacts_0_addresses_0_residentTo_monthTo ,
+       originalRequestData_contacts_0_addresses_0_residentTo_dayTo ,
+       originalRequestData_contacts_0_bankAccount_sortCode ,
+       originalRequestData_contacts_0_bankAccount_clearAccountNumber 
     });
 
+    const destination = convertSourceToTarget(item);
+    console.log('##### JSON Conversion ###');
+    console.log(JSON.stringify(destination, null, 2));
+   
+    const decision = await asyncCall(JSON.stringify(destination));
+    
+    console.log('##### Response from Experian ###');
+    console.log(decision.responseHeader.overallResponse.decision);
+    item.responseHeader_overallResponse_decision = decision.responseHeader.overallResponse.decision;
+    item.responseHeader_overallResponse_decisionText = decision.responseHeader.overallResponse.decisionText;
+    const reasons = decision.responseHeader.overallResponse.decisionReasons;
+    item.responseHeader_overallResponse_decisionReasons_0 = reasons[0];
+    item.responseHeader_overallResponse_decisionReasons_1 = reasons[1];
+    item.responseHeader_overallResponse_decisionReasons_2 = reasons[2];
+    
     const item_1 = await item.save();
+    console.log('##### MONGO DB Record ###');
+    console.log(item_1);
     return res.status(201).json({recordId});
   } catch (error) {
     console.log(`Encountered an error creating data: ${error.message}`);
@@ -287,3 +460,125 @@ export const getTypeDefinitions = (req: IReq<GetTypeDefinitionsBody>, res: IRes)
     return res.status(500).json(generateErrorResponse(ErrorCode.INTERNAL_ERROR, err)).send();
   }
 };
+
+const tokenUrl = 'https://sandbox-uk-api.experian.com/oauth2/v1/token';
+const clientId = 'fsbhNMAfgiu60Gk32vIFAUGJk9g5oPxP';
+const clientSecret = 'g473eCKDIx3xvwdO';
+const username =  "philippe.creignou@docusign.com";
+const password = "Xerox@2626!2626";
+var accountFound = false;
+
+
+async function getToken() {
+    const response = await fetch(tokenUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept':'application/json',
+            'Grant_type':'password'
+        },
+        body: JSON.stringify({
+            "username": username,
+            "password": password,
+            "client_id": clientId,
+            "client_secret": clientSecret
+        })
+    });
+    const data = await response.json();
+    return data.access_token;
+}
+
+async function fetchData(token:string, jsonInput:string): Promise<BankAccountVerificationResponse> {
+  
+
+  // POST request using fetch   
+  const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 
+          'Authorization':  `Bearer ${token}`},
+      body: jsonInput
+  };  
+
+  const response = await fetch('https://sandbox-uk-api.experian.com/da/ccis-devportalapis/v1/api', requestOptions);  
+  
+  
+  const data = await response.json();  
+  console.log(data);
+  return data;
+}
+
+
+
+async function asyncCall(jsonInput: string)  {
+  console.log('calling');
+  const token = await getToken();
+  console.log('EXPERIAN Token ' +JSON.stringify(token));
+  console.log('####### EXPERIAN Payload #####');
+  console.log( jsonInput);
+  const result = await fetchData(token,jsonInput);
+  console.log('EXPERIAN BAV response ' +JSON.stringify(result));
+  // Expected output: "resolved"
+  return result;
+  
+}
+
+
+
+export const verifyBankAccount = async (req: IReq<TargetJSON>, res: IRes) => {
+  const {
+    body: {
+      header,
+      payload   
+    },
+  } = req;
+  try {
+    // Check that accountNumber and routingNumber only contain digits
+   /* if (!/^\d+$/.test(header.tenantId)) {
+      throw new Error('Invalid account number.');
+    }   */
+
+    const decision = asyncCall(JSON.stringify(req));
+
+    (await decision).responseHeader.overallResponse.decision
+
+    if ((await decision).responseHeader.overallResponse.decision =='CONTINUE'){
+      accountFound = true;
+    } else{
+      accountFound = false;
+    }
+
+    
+
+   /* const accountFound = SAMPLE_BANK_ACCOUNTS.find(acc =>
+      acc.accountNumber === accountNumber &&
+      acc.routingNumber === routingNumber &&
+      acc.accountType.toLowerCase() === accountType.toLowerCase()
+    ); */
+    if (accountFound) {
+      //const result: IAccountVerification = { responseHeader_overallResponse_decisionText:(await decision).responseHeader.overallResponse.decision }
+      return res.json(decision);
+    } else {
+      throw new Error('No matching account found. Verification failed.');
+    }
+
+
+    // Mock database lookup
+    /*const accountFound = SAMPLE_BANK_ACCOUNTS.find(acc =>
+      acc.accountNumber === accountNumber &&
+      acc.routingNumber === routingNumber &&
+      acc.accountType.toLowerCase() === accountType.toLowerCase()
+    ); 
+    
+
+    if (accountFound) {
+      const result: BankAccountResponse = { verified: true }
+      return res.json(result);
+    } else {
+      throw new Error('No matching account found. Verification failed.');
+    }*/
+  } catch (err) {
+    console.error(`Encountered an error verifying bank account: ${err.message}`);
+   // const result: IAccountVerification = { verified: false, verifyFailureReason: err.message };
+    return res.json(err);
+  }
+}

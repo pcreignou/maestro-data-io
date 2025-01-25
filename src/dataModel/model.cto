@@ -352,520 +352,353 @@ concept ContactPerson identified by contactPersonId {
 }
 
 
-
-@Description("Main response asset containing details about the request and processing outcomes.")
-@Term("Response")
+@Term("BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_bankaccount")
 @Crud("CREATE, READ, UPDATE, DELETE")
-asset Response identified by responseId {
-  @Description("Unique identifier for the response.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Identifier")
-  o String responseId
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Header")
-  o ResponseHeader responseHeader
-  @Crud("Createable,Readable,Updateable")
-  @Term("Client Response Payload")
-  o ClientResponsePayload clientResponsePayload
-  @Crud("Createable,Readable,Updateable")
-  @Term("Original Request Data")
-  o OriginalRequestData originalRequestData
+concept BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_bankaccount {
+    @Term("originalRequestData_contacts_bankAccount_sortCode")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_bankAccount_sortCode optional
+    @Term("originalRequestData_contacts_bankAccount_clearAccountNumber")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_bankAccount_clearAccountNumber optional
 }
 
-// Response Header
-@Description("Header information for the response.")
-@Term("Header")
-@Crud("Createable,Readable,Updateable")
-concept ResponseHeader {
-  @Description("Type of request that was processed.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Request Type")
-  o String requestType
-  @Description("Client-provided reference identifier.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Client Reference ID")
-  o String clientReferenceId
-  @Description("Unique identifier for the request within the system.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Exp Request ID")
-  o String expRequestId
-  @Description("Timestamp of the message.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Message Time")
-  o String messageTime
-  @Crud("Createable,Readable,Updateable")
-  @Term("Overall Response")
-  o OverallResponse overallResponse
-  @Description("Code representing the outcome of the response.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Code")
-  o String responseCode
-  @Description("Type of the response, such as success or failure.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Type")
-  o String responseType
-  @Description("Human-readable message describing the response.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Message")
-  o String responseMessage
-  @Description("Identifier for the tenant associated with the request.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Tenant ID")
-  o String tenantID
+
+@Term("BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses_Originalrequestdata_contacts_addresses_residentto")
+@Crud("CREATE, READ, UPDATE, DELETE")   
+concept BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses_Originalrequestdata_contacts_addresses_residentto {
+    @Term("originalRequestData_contacts_addresses_residentTo_fullDateTo")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_residentTo_fullDateTo optional
+    @Term("originalRequestData_contacts_addresses_residentTo_yearTo")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_residentTo_yearTo optional
+    @Term("originalRequestData_contacts_addresses_residentTo_monthTo")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_residentTo_monthTo optional
+    @Term("originalRequestData_contacts_addresses_residentTo_dayTo")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_residentTo_dayTo optional
 }
 
-@Description("Overall response summary including decisions and next steps.")
-@Term("Overall Response")
-@Crud("Createable,Readable,Updateable")
-concept OverallResponse {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision")
-  o String decision
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Text")
-  o String decisionText
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Reasons")
-  o String[] decisionReasons
-  @Description("Suggested next actions based on the decision.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Recommended Next Actions")
-  o String[] recommendedNextActions optional
-  @Description("Additional objects related to the decision.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Spare Objects")
-  o String[] spareObjects optional
-}
-
-// Client Response Payload
-@Description("Details of the client-specific response payload.")
-@Term("Client Payload")
-@Crud("Createable,Readable,Updateable")
-concept ClientResponsePayload {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Orchestration Decisions")
-  o OrchestrationDecision[] orchestrationDecisions
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Elements")
-  o DecisionElement[] decisionElements
-}
-
-@Description("Decision made during orchestration.")
-@Term("Orchestration Decision")
-@Crud("Createable,Readable,Updateable")
-concept OrchestrationDecision {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Sequence ID")
-  o String sequenceId
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Source")
-  o String decisionSource
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision")
-  o String decision
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Reasons")
-  o String[] decisionReasons
-  @Description("Score associated with the decision.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Score")
-  o Double score optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Text")
-  o String decisionText
-  @Crud("Createable,Readable,Updateable")
-  @Term("Next Action")
-  o String nextAction
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Time")
-  o String decisionTime
-}
-
-@Description("Element detailing specific decisions and associated metadata.")
-@Term("Decision Element")
-@Crud("Createable,Readable,Updateable")
-concept DecisionElement {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Service Name")
-  o String serviceName
-  @Crud("Createable,Readable,Updateable")
-  @Term("Applicant ID")
-  o String applicantId optional
-  @Description("Warnings or errors related to the service.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Warnings Errors")
-  o WarningError[] warningsErrors optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Other Data")
-  o OtherData otherData optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decisions")
-  o String[] decisions optional
-}
-
-@Description("Warning or error information returned by a service.")
-@Term("Warning/Error")
-@Crud("Createable,Readable,Updateable")
-concept WarningError {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Type")
-  o String responseType
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Code")
-  o String responseCode optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Message")
-  o String responseMessage
-}
-
-@Description("Additional data related to the client response.")
-@Term("Other Data")
-@Crud("Createable,Readable,Updateable")
-concept OtherData {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Branch Data")
-  o String[] branchData optional
-}
-
-// Original Request Data
-@Description("Data from the original request.")
-@Term("Original Request")
-@Crud("Createable,Readable,Updateable")
-concept OriginalRequestData {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Application")
-  o Application application
-  @Crud("Createable,Readable,Updateable")
-  @Term("Source")
-  o String source
-  @Crud("Createable,Readable,Updateable")
-  @Term("Contacts")
-  o Contact[] contacts
-}
-
-@Description("Application details including applicants.")
-@Term("Application")
-@Crud("Createable,Readable,Updateable")
-concept Application {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Applicants")
-  o Applicant[] applicants
-}
-
-@Description("Details of an individual applicant.")
-@Term("Applicant")
-@Crud("Createable,Readable,Updateable")
-concept Applicant {
-  @Crud("Createable,Readable,Updateable")
-  @Term("ID")
-  o String id
-  @Crud("Createable,Readable,Updateable")
-  @Term("Contact ID")
-  o String contactId
-}
- /*
-@Description("Contact information for a person or entity.")
-@Term("Contact")
-@Crud("Createable,Readable,Updateable")
-concept Contact {
-  @Crud("Createable,Readable,Updateable")
-  @Term("ID")
-  o String id
-  @Crud("Createable,Readable,Updateable")
-  @Term("Person")
-  o Person person
-  @Crud("Createable,Readable,Updateable")
-  @Term("Addresses")
-  o Address[] addresses
-  @Crud("Createable,Readable,Updateable")
-  @Term("Bank Account")
-  o BankAccount bankAccount
-}
-
-@Description("Details about a person.")
-@Term("Person")
-@Crud("Createable,Readable,Updateable")
-concept Person {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Type Of Person")
-  o String typeOfPerson
-  @Crud("Createable,Readable,Updateable")
-  @Term("Person Details")
-  o PersonDetails personDetails
-  @Crud("Createable,Readable,Updateable")
-  @Term("Names")
-  o Name[] names
-}
-
-@Description("Additional details about a person.")
-@Term("Person Details")
-@Crud("Createable,Readable,Updateable")
-concept PersonDetails {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Date Of Birth")
-  o String dateOfBirth optional
-}
-
-@Description("Name details including first name and surname.")
-@Term("Name")
-@Crud("Createable,Readable,Updateable")
-concept Name {
-  @Crud("Createable,Readable,Updateable")
-  @Term("ID")
-  o String id
-  @Crud("Createable,Readable,Updateable")
-  @Term("Type")
-  o String type
-  @Crud("Createable,Readable,Updateable")
-  @Term("Title")
-  o String title
-  @Crud("Createable,Readable,Updateable")
-  @Term("First Name")
-  o String firstName
-  @Crud("Createable,Readable,Updateable")
-  o String middleNames optional
-  @Crud("Createable,Readable,Updateable")
-  o String surName
-  @Crud("Createable,Readable,Updateable")
-  o String nameSuffix optional
-}
-
-@Description("Address details for a contact.")
-@Term("Address")
-@Crud("Createable,Readable,Updateable")
-concept Address {
-  @Crud("Createable,Readable,Updateable")
-  @Term("ID")
-  o String id
-  @Crud("Createable,Readable,Updateable")
-  @Term("Address Identifier")
-  o String addressIdentifier
-  @Crud("Createable,Readable,Updateable")
-  @Term("Indicator")
-  o String indicator
-  @Crud("Createable,Readable,Updateable")
-  @Term("Address Type")
-  o String addressType
-  @Crud("Createable,Readable,Updateable")
-  @Term("PO Box Nunmber")
-  o String poBoxNumber optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Sub Building")
-  o String subBuilding optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Building Name")
-  o String buildingName optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Building Number")
-  o String buildingNumber
-  @Crud("Createable,Readable,Updateable")
-  @Term("Street")
-  o String street
-  @Crud("Createable,Readable,Updateable")
-  @Term("Street2")
-  o String street2 optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Sub Locality")
-  o String subLocality optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Locality")
-  o String locality optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Post Town")
-  o String postTown
-  @Crud("Createable,Readable,Updateable")
-  @Term("County")
-  o String county optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Postal")
-  o String postal
-  @Crud("Createable,Readable,Updateable")
-  @Term("Contry Code")
-  o String countryCode
-  @Crud("Createable,Readable,Updateable")
-  @Term("Resident From")
-  o ResidencyPeriod residentFrom
-  @Crud("Createable,Readable,Updateable")
-  @Term("Resident To")
-  o ResidencyPeriod residentTo
-}
-
-@Description("Period of residency at an address.")
-@Term("Residency Period")
-@Crud("Createable,Readable,Updateable")
-concept ResidencyPeriod {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Full Date From")
-  o String fullDateFrom
-  @Crud("Createable,Readable,Updateable")
-  @Term("Year From")
-  o String yearFrom
-  @Crud("Createable,Readable,Updateable")
-  @Term("Month From")
-  o String monthFrom
-  @Crud("Createable,Readable,Updateable")
-  @Term("Day From")
-  o String dayFrom
-  @Crud("Createable,Readable,Updateable")
-  @Term("full Date To")
-  o String fullDateTo optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Year To")
-  o String yearTo optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Month To")
-  o String monthTo optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Day to")
-  o String dayTo optional
-}
-
-@Description("Bank account details for a contact.")
-@Term("Bank Account")
-@Crud("Createable,Readable,Updateable")
-concept BankAccount {
-  @Crud("Createable,Readable,Updateable")
-  @Term("Sort Code")
-  o String sortCode
-  @Crud("Createable,Readable,Updateable")
-  @Term("Clear account Number")
-  o String clearAccountNumber optional
-}*/
-
-@Description("Main response asset containing details about the request and processing outcomes.")
-@Term("FlatBAVResponse")
+@Term("BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses_Originalrequestdata_contacts_addresses_residentfrom")
 @Crud("CREATE, READ, UPDATE, DELETE")
-asset Response identified by responseId {
-  @Description("Unique identifier for the response.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Identifier")
-  o String responseId
-  @Crud("Createable,Readable,Updateable")
-  @Term("Request Type")
-  o String requestType
-  @Description("Client-provided reference identifier.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Client Reference ID")
-  o String clientReferenceId
-  @Description("Unique identifier for the request within the system.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Exp Request ID")
-  o String expRequestId
-  @Description("Timestamp of the message.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Message Time")
-  o String messageTime
-   @Crud("Createable,Readable,Updateable")
-  @Term("Decision")
-  o String decision
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Text")
-  o String decisionText
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Reasons")
-  o String[] decisionReasons
-  @Description("Suggested next actions based on the decision.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Recommended Next Actions")
-  o String[] recommendedNextActions optional
-  @Description("Additional objects related to the decision.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Spare Objects")
-  o String[] spareObjects optional
-  @Description("Code representing the outcome of the response.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Code")
-  o String responseCode
-  @Description("Type of the response, such as success or failure.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Type")
-  o String responseType
-  @Description("Human-readable message describing the response.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Response Message")
-  o String responseMessage
-  @Description("Identifier for the tenant associated with the request.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Tenant ID")
-  o String tenantID
- @Crud("Createable,Readable,Updateable")
-  @Term("Sequence ID")
-  o String sequenceId
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Source")
-  o String decisionSource
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision")
-  o String decision
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Reasons")
-  o String[] decisionReasons
-  @Description("Score associated with the decision.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Score")
-  o Double score optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Text")
-  o String decisionText
-  @Crud("Createable,Readable,Updateable")
-  @Term("Next Action")
-  o String nextAction
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decision Time")
-  o String decisionTime  
-  @Crud("Createable,Readable,Updateable")
-  @Term("Service Name")
-  o String serviceName
-  @Crud("Createable,Readable,Updateable")
-  @Term("Applicant ID")
-  o String applicantId optional
-  @Description("Warnings or errors related to the service.")
-  @Crud("Createable,Readable,Updateable")
-  @Term("Warnings Errors")
-  o String[] warningsErrors optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Branch Data")
-  o String[] branchData optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Decisions")
-  o String[] decisions optional  
-  @Crud("Createable,Readable,Updateable")
-  @Term("Source")
-  o String source  
-  @Crud("Createable,Readable,Updateable")
-  @Term("contact ID")
-  o String ContactId
-  @Crud("Createable,Readable,Updateable")
-  @Term("Type Of Person")
-  o String typeOfPerson
-  @Crud("Createable,Readable,Updateable")
-  @Term("Date Of Birth")
-  o String dateOfBirth optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("ID")
-  o String id
-  @Crud("Createable,Readable,Updateable")
-  @Term("Type")
-  o String type
-  @Crud("Createable,Readable,Updateable")
-  @Term("Title")
-  o String title
-  @Crud("Createable,Readable,Updateable")
-  @Term("First Name")
-  o String firstName
-  @Crud("Createable,Readable,Updateable")
-  o String middleNames optional
-  @Crud("Createable,Readable,Updateable")
-  o String surName
-  @Crud("Createable,Readable,Updateable")
-  o String nameSuffix optional
-  @Crud("Createable,Readable,Updateable")
-  @Term("Addresses")
-  o Address[] addresses
-  @Crud("Createable,Readable,Updateable")
-  @Term("Bank Account")
-  o BankAccount bankAccount
+concept BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses_Originalrequestdata_contacts_addresses_residentfrom {
+    @Term("originalRequestData_contacts_addresses_residentFrom_fullDateFrom")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_residentFrom_fullDateFrom optional
+    @Term("originalRequestData_contacts_addresses_residentFrom_yearFrom")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_residentFrom_yearFrom optional
+    @Term("originalRequestData_contacts_addresses_residentFrom_monthFrom")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_residentFrom_monthFrom optional
+    @Term("originalRequestData_contacts_addresses_residentFrom_dayFrom")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_residentFrom_dayFrom optional
 }
 
+@Term("BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses {
+    @Term("originalRequestData_contacts_addresses_id")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_id optional
+    @Term("originalRequestData_contacts_addresses_addressIdentifier")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_addressIdentifier optional
+    @Term("originalRequestData_contacts_addresses_indicator")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_indicator optional
+    @Term("originalRequestData_contacts_addresses_addressType")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_addressType optional
+    @Term("originalRequestData_contacts_addresses_poBoxNumber")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_poBoxNumber optional
+    @Term("originalRequestData_contacts_addresses_subBuilding")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_subBuilding optional
+    @Term("originalRequestData_contacts_addresses_buildingName")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_buildingName optional
+    @Term("originalRequestData_contacts_addresses_buildingNumber")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_buildingNumber optional
+    @Term("originalRequestData_contacts_addresses_street")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_street optional
+    @Term("originalRequestData_contacts_addresses_street2")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_street2 optional
+    @Term("originalRequestData_contacts_addresses_subLocality")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_subLocality optional
+    @Term("originalRequestData_contacts_addresses_locality")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_locality optional
+    @Term("originalRequestData_contacts_addresses_postTown")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_postTown optional
+    @Term("originalRequestData_contacts_addresses_county")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_county optional
+    @Term("originalRequestData_contacts_addresses_postal")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_postal optional
+    @Term("originalRequestData_contacts_addresses_countryCode")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_addresses_countryCode optional
+    @Term("originalRequestData_contacts_addresses_residentFrom")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses_Originalrequestdata_contacts_addresses_residentfrom originalRequestData_contacts_addresses_residentFrom optional
+    @Term("originalRequestData_contacts_addresses_residentTo")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses_Originalrequestdata_contacts_addresses_residentto originalRequestData_contacts_addresses_residentTo optional
+}
 
+@Term("BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person_Originalrequestdata_contacts_person_names")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person_Originalrequestdata_contacts_person_names {
+    @Term("originalRequestData_contacts_person_names_id")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_names_id optional
+    @Term("originalRequestData_contacts_person_names_type")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_names_type optional
+    @Term("originalRequestData_contacts_person_names_title")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_names_title optional
+    @Term("originalRequestData_contacts_person_names_firstName")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_names_firstName optional
+    @Term("originalRequestData_contacts_person_names_middleNames")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_names_middleNames optional
+    @Term("originalRequestData_contacts_person_names_surName")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_names_surName optional
+    @Term("originalRequestData_contacts_person_names_nameSuffix")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_names_nameSuffix optional
+}
 
+@Term("BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person_Originalrequestdata_contacts_person_persondetails")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person_Originalrequestdata_contacts_person_persondetails {
+    @Term("originalRequestData_contacts_person_personDetails_dateOfBirth")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_personDetails_dateOfBirth optional
+}
+
+@Term("BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person {
+    @Term("originalRequestData_contacts_person_typeOfPerson")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_person_typeOfPerson optional
+    @Term("originalRequestData_contacts_person_personDetails")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person_Originalrequestdata_contacts_person_persondetails originalRequestData_contacts_person_personDetails optional
+    @Term("originalRequestData_contacts_person_names")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person_Originalrequestdata_contacts_person_names[] originalRequestData_contacts_person_names optional
+}
+
+@Term("BAV_Originalrequestdata_Originalrequestdata_contacts")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Originalrequestdata_Originalrequestdata_contacts {
+    @Term("originalRequestData_contacts_id")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_contacts_id optional
+    @Term("originalRequestData_contacts_person")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person originalRequestData_contacts_person optional
+    @Term("originalRequestData_contacts_addresses")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses[] originalRequestData_contacts_addresses optional
+    @Term("originalRequestData_contacts_bankAccount")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_bankaccount originalRequestData_contacts_bankAccount optional
+}
+
+@Term("BAV_Originalrequestdata_Originalrequestdata_application_Originalrequestdata_application_applicants")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Originalrequestdata_Originalrequestdata_application_Originalrequestdata_application_applicants {
+    @Term("originalRequestData_application_applicants_id")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_application_applicants_id optional
+    @Term("originalRequestData_application_applicants_contactId")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_application_applicants_contactId optional
+}
+
+@Term("BAV_Originalrequestdata_Originalrequestdata_application")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Originalrequestdata_Originalrequestdata_application {
+    @Term("originalRequestData_application_applicants")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_application_Originalrequestdata_application_applicants[] originalRequestData_application_applicants optional
+}
+
+@Term("BAV_Originalrequestdata")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Originalrequestdata {
+    @Term("originalRequestData_application")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_application originalRequestData_application optional
+    @Term("originalRequestData_source")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String originalRequestData_source optional
+    @Term("originalRequestData_contacts")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata_Originalrequestdata_contacts[] originalRequestData_contacts optional
+}
+
+@Term("BAV_Clientresponsepayload_Clientresponsepayload_decisionelements_Clientresponsepayload_decisionelements_otherdata")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Clientresponsepayload_Clientresponsepayload_decisionelements_Clientresponsepayload_decisionelements_otherdata {
+    @Term("clientResponsePayload_decisionElements_otherData_branchData")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String[] clientResponsePayload_decisionElements_otherData_branchData optional
+}
+
+@Term("BAV_Clientresponsepayload_Clientresponsepayload_decisionelements_Clientresponsepayload_decisionelements_warningserrors")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Clientresponsepayload_Clientresponsepayload_decisionelements_Clientresponsepayload_decisionelements_warningserrors {
+    @Term("clientResponsePayload_decisionElements_warningsErrors_responseType")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_decisionElements_warningsErrors_responseType optional
+    @Term("clientResponsePayload_decisionElements_warningsErrors_responseCode")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_decisionElements_warningsErrors_responseCode optional
+    @Term("clientResponsePayload_decisionElements_warningsErrors_responseMessage")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_decisionElements_warningsErrors_responseMessage optional
+}
+
+@Term("BAV_Clientresponsepayload_Clientresponsepayload_decisionelements")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Clientresponsepayload_Clientresponsepayload_decisionelements {
+    @Term("clientResponsePayload_decisionElements_serviceName")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_decisionElements_serviceName optional
+    @Term("clientResponsePayload_decisionElements_applicantId")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_decisionElements_applicantId optional
+    @Term("clientResponsePayload_decisionElements_warningsErrors")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Clientresponsepayload_Clientresponsepayload_decisionelements_Clientresponsepayload_decisionelements_warningserrors[] clientResponsePayload_decisionElements_warningsErrors optional
+    @Term("clientResponsePayload_decisionElements_otherData")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Clientresponsepayload_Clientresponsepayload_decisionelements_Clientresponsepayload_decisionelements_otherdata clientResponsePayload_decisionElements_otherData optional
+    @Term("clientResponsePayload_decisionElements_decisions")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String[] clientResponsePayload_decisionElements_decisions optional
+}
+
+@Term("BAV_Clientresponsepayload_Clientresponsepayload_orchestrationdecisions")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Clientresponsepayload_Clientresponsepayload_orchestrationdecisions {
+    @Term("clientResponsePayload_orchestrationDecisions_sequenceId")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_orchestrationDecisions_sequenceId optional
+    @Term("clientResponsePayload_orchestrationDecisions_decisionSource")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_orchestrationDecisions_decisionSource optional
+    @Term("clientResponsePayload_orchestrationDecisions_decision")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_orchestrationDecisions_decision optional
+    @Term("clientResponsePayload_orchestrationDecisions_decisionReasons")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String[] clientResponsePayload_orchestrationDecisions_decisionReasons optional
+    @Term("clientResponsePayload_orchestrationDecisions_score")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o Double clientResponsePayload_orchestrationDecisions_score optional
+    @Term("clientResponsePayload_orchestrationDecisions_decisionText")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_orchestrationDecisions_decisionText optional
+    @Term("clientResponsePayload_orchestrationDecisions_nextAction")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_orchestrationDecisions_nextAction optional
+    @Term("clientResponsePayload_orchestrationDecisions_decisionTime")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String clientResponsePayload_orchestrationDecisions_decisionTime optional
+}
+
+@Term("BAV_Clientresponsepayload")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Clientresponsepayload {
+    @Term("clientResponsePayload_orchestrationDecisions")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Clientresponsepayload_Clientresponsepayload_orchestrationdecisions[] clientResponsePayload_orchestrationDecisions optional
+    @Term("clientResponsePayload_decisionElements")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Clientresponsepayload_Clientresponsepayload_decisionelements[] clientResponsePayload_decisionElements optional
+}
+
+@Term("BAV_Responseheader_Responseheader_overallresponse")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Responseheader_Responseheader_overallresponse {
+    @Term("responseHeader_overallResponse_decision")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_overallResponse_decision optional
+    @Term("responseHeader_overallResponse_decisionText")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_overallResponse_decisionText optional
+    @Term("responseHeader_overallResponse_decisionReasons")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String[] responseHeader_overallResponse_decisionReasons optional
+    @Term("responseHeader_overallResponse_recommendedNextActions")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String[] responseHeader_overallResponse_recommendedNextActions optional
+    @Term("responseHeader_overallResponse_spareObjects")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String[] responseHeader_overallResponse_spareObjects optional
+}
+
+@Term("BAV_Responseheader")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV_Responseheader {
+    @Term("responseHeader_requestType")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_requestType optional
+    @Term("responseHeader_clientReferenceId")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_clientReferenceId optional
+    @Term("responseHeader_expRequestId")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_expRequestId optional
+    @Term("responseHeader_messageTime")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_messageTime optional
+    @Term("responseHeader_overallResponse")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Responseheader_Responseheader_overallresponse responseHeader_overallResponse optional
+    @Term("responseHeader_responseCode")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_responseCode optional
+    @Term("responseHeader_responseType")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_responseType optional
+    @Term("responseHeader_responseMessage")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_responseMessage optional
+    @Term("responseHeader_tenantID")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o String responseHeader_tenantID optional
+}
+
+@Term("BAV")
+@Crud("CREATE, READ, UPDATE, DELETE")
+concept BAV {
+    @Term("responseHeader")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Responseheader responseHeader optional
+    @Term("clientResponsePayload")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Clientresponsepayload clientResponsePayload optional
+    @Term("originalRequestData")
+    @Crud("CREATE, READ, UPDATE, DELETE")
+    o BAV_Originalrequestdata originalRequestData optional
+}

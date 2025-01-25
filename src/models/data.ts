@@ -1,5 +1,6 @@
 
-import mongoose, {Document, Schema } from "mongoose";
+import mongoose, { Schema, Document, Model } from 'mongoose';
+
 
 
 interface BankAccount extends Document {
@@ -9,9 +10,7 @@ interface BankAccount extends Document {
     
 }
 
-interface PersonDetails extends Document {
-  dateOfBirth?: Date; 
-}
+
 
 
 interface Name extends Document
@@ -24,11 +23,7 @@ interface Name extends Document
     }
 
 
-  interface Person extends Document {
-    personDetails: PersonDetails;
-    typeOfPerson: string;
-    names:Name[]
-  }
+  
 
  interface residentFrom extends Document {
     fullDateFrom: string;
@@ -80,12 +75,13 @@ export interface IContact{
 export interface IAccountVerification{
   
     responseHeader_requestType: string;
+    responseHeader_tenantId: string;
     responseHeader_clientReferenceId: string;
     responseHeader_expRequestId: string;
     responseHeader_messageTime : Date;
     responseHeader_overallResponse_decision: string;
     responseHeader_overallResponse_decisionText: string;
-    responseHeader_overallResponse_decisionReasons_0: string[];
+    responseHeader_overallResponse_decisionReasons_0: string;
     responseHeader_overallResponse_decisionReasons_1: string;
     responseHeader_overallResponse_decisionReasons_2: string;
     responseHeader_overallResponse_recommendedNextActions: string[];
@@ -250,6 +246,9 @@ const AccountVerificationSchema: Schema = new Schema(
     responseHeader_requestType: {
    type: String
     },
+    responseHeader_tenantId: {
+      type: String
+       },
  responseHeader_clientReferenceId : {
    type :  String 
     },
@@ -293,7 +292,7 @@ const AccountVerificationSchema: Schema = new Schema(
    type :  String 
     },
  clientResponsePayload_orchestrationDecisions_0_sequenceId : {
-   type :  Date 
+   type :  String
     },
  clientResponsePayload_orchestrationDecisions_0_decisionSource : {
    type :  String 
@@ -314,10 +313,10 @@ const AccountVerificationSchema: Schema = new Schema(
    type :  String 
     },
  clientResponsePayload_orchestrationDecisions_0_decisionTime : {
-   type :  Date 
+   type : String
     },
  clientResponsePayload_orchestrationDecisions_1_sequenceId : {
-   type :  Date 
+   type :  String
     },
  clientResponsePayload_orchestrationDecisions_1_decisionSource : {
    type :  String 
@@ -329,7 +328,7 @@ const AccountVerificationSchema: Schema = new Schema(
    type :  String 
     },
  clientResponsePayload_orchestrationDecisions_1_score : {
-   type :  Number 
+   type :  String 
     },
  clientResponsePayload_orchestrationDecisions_1_decisionText : {
    type :  String 
@@ -338,10 +337,10 @@ const AccountVerificationSchema: Schema = new Schema(
    type :  String 
     },
  clientResponsePayload_orchestrationDecisions_1_decisionTime : {
-   type :  Date 
+   type :  String
     },
  clientResponsePayload_orchestrationDecisions_2_sequenceId : {
-   type :  Date 
+   type :  String
     },
  clientResponsePayload_orchestrationDecisions_2_decisionSource : {
    type :  String 
@@ -404,7 +403,7 @@ const AccountVerificationSchema: Schema = new Schema(
    type :  String 
     },
  clientResponsePayload_decisionElements_0_decisions_0_value : {
-   type :  Date 
+   type :  String
     },
  clientResponsePayload_decisionElements_0_decisions_1_element : {
    type :  String 
@@ -569,7 +568,7 @@ const AccountVerificationSchema: Schema = new Schema(
    type :  String 
     },
  clientResponsePayload_decisionElements_2_rules_10_ruleId : {
-   type :  Date 
+   type : String
     },
  clientResponsePayload_decisionElements_2_rules_10_ruleName : {
    type :  String 
@@ -680,7 +679,7 @@ const AccountVerificationSchema: Schema = new Schema(
    type :  String 
     },
  originalRequestData_contacts_0_addresses_0_buildingNumber : {
-   type :  Date 
+   type :  String 
     },
  originalRequestData_contacts_0_addresses_0_street : {
    type :  String 
@@ -710,28 +709,28 @@ const AccountVerificationSchema: Schema = new Schema(
    type :  Date 
     },
  originalRequestData_contacts_0_addresses_0_residentFrom_yearFrom : {
-   type :  Date 
+   type :  String
     },
  originalRequestData_contacts_0_addresses_0_residentFrom_monthFrom : {
-   type :  Date 
+   type :  String 
     },
  originalRequestData_contacts_0_addresses_0_residentFrom_dayFrom : {
    type :  String 
     },
  originalRequestData_contacts_0_addresses_0_residentTo_fullDateTo : {
-   type :  Date 
+   type :  String
     },
  originalRequestData_contacts_0_addresses_0_residentTo_yearTo : {
-   type :  Date 
+   type : String 
     },
  originalRequestData_contacts_0_addresses_0_residentTo_monthTo : {
-   type :  Date 
+   type :  String 
     },
  originalRequestData_contacts_0_addresses_0_residentTo_dayTo : {
    type :  String 
     },
  originalRequestData_contacts_0_bankAccount_sortCode : {
-   type :  Date 
+   type :  String 
     },
  originalRequestData_contacts_0_bankAccount_clearAccountNumber : {
    type :  String
@@ -805,5 +804,311 @@ const ContactSchema: Schema = new Schema(
   }
 );
 
-export default mongoose.model<IContactModel>('AccountVerififcation', AccountVerificationSchema);
+export interface OverallResponse  {
+  decision?: string;
+  decisionText?: string;
+  decisionReasons?: string[];
+  recommendedNextActions?: string[];
+  spareObjects?: string[];
+}
+
+export interface ResponseHeader {
+  requestType?: string;
+  clientReferenceId?: string;
+  expRequestId?: string;
+  messageTime?: string;
+  overallResponse?: OverallResponse;
+  responseCode?: string;
+  responseType?: string;
+  responseMessage?: string;
+  tenantID?: string;
+}
+
+export interface OtherData {
+  branchData?: string[];
+}
+
+export interface WarningsErrors {
+  responseType?: string;
+  responseCode?: string;
+  responseMessage?: string;
+}
+
+export interface DecisionElements {
+  serviceName?: string;
+  applicantId?: string;
+  warningsErrors?: WarningsErrors[];
+  otherData?: OtherData;
+  decisions?: string[];
+}
+
+export interface OrchestrationDecisions {
+  sequenceId?: string;
+  decisionSource?: string;
+  decision?: string;
+  decisionReasons?: string[];
+  score?: number;
+  decisionText?: string;
+  nextAction?: string;
+  decisionTime?: string;
+}
+
+export interface ClientResponsePayload {
+  orchestrationDecisions?: OrchestrationDecisions[];
+  decisionElements?: DecisionElements[];
+}
+
+export interface PersonNames {
+  id?: string;
+  type?: string;
+  title?: string;
+  firstName?: string;
+  middleNames?: string;
+  surName?: string;
+  nameSuffix?: string;
+}
+
+export interface PersonDetails {
+  dateOfBirth?: string;
+}
+
+export interface Person {
+  typeOfPerson?: string;
+  personDetails?: PersonDetails;
+  names?: PersonNames[];
+}
+
+export interface ResidentFrom {
+  fullDateFrom?: string;
+  yearFrom?: string;
+  monthFrom?: string;
+  dayFrom?: string;
+}
+
+export interface ResidentTo {
+  fullDateTo?: string;
+  yearTo?: string;
+  monthTo?: string;
+  dayTo?: string;
+}
+
+export interface Address {
+  id?: string;
+  addressIdentifier?: string;
+  indicator?: string;
+  addressType?: string;
+  poBoxNumber?: string;
+  subBuilding?: string;
+  buildingName?: string;
+  buildingNumber?: string;
+  street?: string;
+  street2?: string;
+  subLocality?: string;
+  locality?: string;
+  postTown?: string;
+  county?: string;
+  postal?: string;
+  countryCode?: string;
+  residentFrom?: ResidentFrom;
+  residentTo?: ResidentTo;
+}
+
+export interface Contact {
+  id?: string;
+  person?: Person;
+  addresses?: Address[];
+  bankAccount?: {
+    sortCode?: string;
+    clearAccountNumber?: string;
+  };
+}
+
+export interface OriginalRequestData {
+  application?: {
+    applicants?: {
+      id?: string;
+      contactId?: string;
+    }[];
+  };
+  source?: string;
+  contacts?: Contact[];
+}
+
+export interface BAV {
+  responseHeader?: ResponseHeader;
+  clientResponsePayload?: ClientResponsePayload;
+  originalRequestData?: OriginalRequestData;
+}
+
+
+// Sub-schema for BAV_Responseheader_Responseheader_overallresponse
+const OverallResponseSchema = new Schema({
+  decision: { type: String },
+  decisionText: { type: String },
+  decisionReasons: { type: [String] },
+  recommendedNextActions: { type: [String] },
+  spareObjects: { type: [String] },
+});
+
+// Sub-schema for BAV_Responseheader
+const ResponseHeaderSchema = new Schema({
+  requestType: { type: String },
+  clientReferenceId: { type: String },
+  expRequestId: { type: String },
+  messageTime: { type: String },
+  overallResponse: OverallResponseSchema,
+  responseCode: { type: String },
+  responseType: { type: String },
+  responseMessage: { type: String },
+  tenantID: { type: String },
+});
+
+// Sub-schema for BAV_Clientresponsepayload_Clientresponsepayload_decisionelements_Clientresponsepayload_decisionelements_otherdata
+const OtherDataSchema = new Schema({
+  branchData: { type: [String] },
+});
+
+// Sub-schema for BAV_Clientresponsepayload_Clientresponsepayload_decisionelements_Clientresponsepayload_decisionelements_warningserrors
+export const WarningsErrorsSchema = new Schema({
+  responseType: { type: String },
+  responseCode: { type: String },
+  responseMessage: { type: String },
+});
+
+// Sub-schema for BAV_Clientresponsepayload_Clientresponsepayload_decisionelements
+export const DecisionElementsSchema = new Schema({
+  serviceName: { type: String },
+  applicantId: { type: String },
+  warningsErrors: [WarningsErrorsSchema],
+  otherData: OtherDataSchema,
+  decisions: { type: [String] },
+});
+
+// Sub-schema for BAV_Clientresponsepayload_Clientresponsepayload_orchestrationdecisions
+export const OrchestrationDecisionsSchema = new Schema({
+  sequenceId: { type: String },
+  decisionSource: { type: String },
+  decision: { type: String },
+  decisionReasons: { type: [String] },
+  score: { type: Number },
+  decisionText: { type: String },
+  nextAction: { type: String },
+  decisionTime: { type: String },
+});
+
+// Sub-schema for BAV_Clientresponsepayload
+export const ClientResponsePayloadSchema = new Schema({
+  orchestrationDecisions: [OrchestrationDecisionsSchema],
+  decisionElements: [DecisionElementsSchema],
+});
+
+// Sub-schema for BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person_Originalrequestdata_contacts_person_names
+export const PersonNamesSchema = new Schema({
+  id: { type: String },
+  type: { type: String },
+  title: { type: String },
+  firstName: { type: String },
+  middleNames: { type: String },
+  surName: { type: String },
+  nameSuffix: { type: String },
+});
+
+// Sub-schema for BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person_Originalrequestdata_contacts_person_persondetails
+export const PersonDetailsSchema = new Schema({
+  dateOfBirth: { type: String },
+});
+
+// Sub-schema for BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_person
+export const PersonSchema = new Schema({
+  typeOfPerson: { type: String },
+  personDetails: PersonDetailsSchema,
+  names: [PersonNamesSchema],
+});
+
+// Sub-schema for BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses_Originalrequestdata_contacts_addresses_residentfrom
+export const ResidentFromSchema = new Schema({
+  fullDateFrom: { type: String },
+  yearFrom: { type: String },
+  monthFrom: { type: String },
+  dayFrom: { type: String },
+});
+
+// Sub-schema for BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses_Originalrequestdata_contacts_addresses_residentto
+export const ResidentToSchema = new Schema({
+  fullDateTo: { type: String },
+  yearTo: { type: String },
+  monthTo: { type: String },
+  dayTo: { type: String },
+});
+
+// Sub-schema for BAV_Originalrequestdata_Originalrequestdata_contacts_Originalrequestdata_contacts_addresses
+export const AddressesSchema = new Schema({
+  id: { type: String },
+  addressIdentifier: { type: String },
+  indicator: { type: String },
+  addressType: { type: String },
+  poBoxNumber: { type: String },
+  subBuilding: { type: String },
+  buildingName: { type: String },
+  buildingNumber: { type: String },
+  street: { type: String },
+  street2: { type: String },
+  subLocality: { type: String },
+  locality: { type: String },
+  postTown: { type: String },
+  county: { type: String },
+  postal: { type: String },
+  countryCode: { type: String },
+  residentFrom: ResidentFromSchema,
+  residentTo: ResidentToSchema,
+});
+
+// Sub-schema for BAV_Originalrequestdata_Originalrequestdata_contacts
+export const ContactsSchema = new Schema({
+  id: { type: String },
+  person: PersonSchema,
+  addresses: [AddressesSchema],
+  bankAccount: {
+    sortCode: { type: String },
+    clearAccountNumber: { type: String },
+  },
+});
+
+// Sub-schema for BAV_Originalrequestdata
+export const OriginalRequestDataSchema = new Schema({
+  application: {
+    applicants: [
+      {
+        id: { type: String },
+        contactId: { type: String },
+      },
+    ],
+  },
+  source: { type: String },
+  contacts: [ContactsSchema],
+});
+
+export interface IBAVModel extends BAV, Document{
+
+}
+
+// Main schema for BAV
+export const BAVSchema = new Schema({
+  responseHeader: ResponseHeaderSchema,
+  clientResponsePayload: ClientResponsePayloadSchema,
+  originalRequestData: OriginalRequestDataSchema,
+});
+
+
+
+//export default mongoose.model("BAV", BAVSchema);
+
+
+/**
+ * Additional concepts from the Concerto model will follow the same structure.
+ * Define each concept as an interface and schema.
+ */
+
+
+export default mongoose.model<IAccountVerificationModel>('AccountVerififcation', AccountVerificationSchema);
 //export default mongoose.model<IContactModel>('Contact', ContactSchema);

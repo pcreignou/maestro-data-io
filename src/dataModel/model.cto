@@ -711,23 +711,23 @@ concept BAV identified by _Id{
     o String _Id
   @Term("responseHeader_overallResponse_decision")
   @Crud("Createable,Readable,Updateable")
-  o String  responseHeader_overallResponse_decision
+  o String  responseHeader_overallResponse_decision optional
 
   @Term("responseHeader_overallResponse_decisionText")
   @Crud("Createable,Readable,Updateable")
-  o String responseHeader_overallResponse_decisionText
+  o String responseHeader_overallResponse_decisionText optional
 
   @Term("responseHeader_overallResponse_decisionReasons_0")
   @Crud("Createable,Readable,Updateable")
-  o String responseHeader_overallResponse_decisionReasons_0
+  o String responseHeader_overallResponse_decisionReasons_0 optional
 
   @Term("responseHeader_overallResponse_decisionReasons_1")
   @Crud("Createable,Readable,Updateable")
-  o String responseHeader_overallResponse_decisionReasons_1
+  o String responseHeader_overallResponse_decisionReasons_1 optional
 
   @Term("responseHeader_overallResponse_decisionReasons_2")
   @Crud("Createable,Readable,Updateable")
-  o String responseHeader_overallResponse_decisionReasons_2
+  o String responseHeader_overallResponse_decisionReasons_2 optional
 
 	 @Term("originalRequestData_source")
    @Crud("Createable,Readable,Updateable")

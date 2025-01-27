@@ -56,9 +56,11 @@ export class QueryExecutor {
     public static resolveWalk(walk: string, record: Record<string, any>): any {
         const segments: string[] = walk.split('/');
         let currentValue: any = record;
+             
 
         for (const segment of segments) {
             if (!currentValue) return undefined;
+
 
             // Handle relationship properties with type names
             if (segment.includes('(:')) {

@@ -611,9 +611,8 @@ export const searchRecords = async (req: IReq<SearchRecordsBody>, res: IRes): Pr
     if (!query || !pagination) {
       return res.status(400).json(generateErrorResponse(ErrorCode.BAD_REQUEST, 'Query or pagination missing in request')).send();
     }
-    
     const data = await Data.find();
-    console.log(data);
+    
     const index: number = QueryExecutor.execute(query, data);
 
     if (index === -1) {

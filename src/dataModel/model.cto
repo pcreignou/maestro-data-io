@@ -709,8 +709,28 @@ concept BAV identified by _Id{
 	@Term("BAV Id")
     @Crud("Readable")
     o String _Id
+  @Term("responseHeader_overallResponse_decision")
+  @Crud("Createable,Readable,Updateable")
+  o String  responseHeader_overallResponse_decision
+
+  @Term("responseHeader_overallResponse_decisionText")
+  @Crud("Createable,Readable,Updateable")
+  o String responseHeader_overallResponse_decisionText
+
+  @Term("responseHeader_overallResponse_decisionReasons_0")
+  @Crud("Createable,Readable,Updateable")
+  o String responseHeader_overallResponse_decisionReasons_0
+
+  @Term("responseHeader_overallResponse_decisionReasons_1")
+  @Crud("Createable,Readable,Updateable")
+  o String responseHeader_overallResponse_decisionReasons_1
+
+  @Term("responseHeader_overallResponse_decisionReasons_2")
+  @Crud("Createable,Readable,Updateable")
+  o String responseHeader_overallResponse_decisionReasons_2
+
 	 @Term("originalRequestData_source")
-    @Crud("Createable,Readable,Updateable")
+   @Crud("Createable,Readable,Updateable")
     o String originalRequestData_source optional	
 	@Term("originalRequestData_application_applicants_id")
     @Crud("Createable,Readable,Updateable")

@@ -18,7 +18,14 @@ import { NodeEnvs } from './constants/env';
 import { RouteError } from './utils/errors';
 import { UnauthorizedError } from 'express-jwt';
 
+
+const cors = require("cors");
+const corsOptions = {
+  origin: ["http://localhost:5173"],
+};
+
 const app = express();
+app.use(cors(corsOptions));
 //const axios = require('axios');
 const { readFileSync } = require('fs');
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import Paths from '../constants/paths';
-import { createRecord, getTypeDefinitions, getTypeNames, patchRecord,  searchRecords } from '../services/dataio.service';
+import { createRecord, getAllRecords, getTypeDefinitions, getTypeNames, patchRecord,  searchRecords } from '../services/dataio.service';
 import { expressjwt as jwt } from 'express-jwt';
 import { checkSchema } from 'express-validator';
 import { dataIOCreateRecordBody, dataIOGetTypeDefinitionsRecordBody, dataIOGetTypeNamesRecordBody, dataIOPatchRecordBody, dataIOSearchRecordsBody } from '../validationSchemas/dataio';
@@ -63,6 +63,17 @@ dataIORouter.post(
   checkSchema(dataIOGetTypeDefinitionsRecordBody, ['body']),
   checkValidationErrors,
   getTypeDefinitions,
+);
+
+dataIORouter.get(
+  Paths.DataIO.GetAllRecords.Get,
+  /*jwt({
+    secret: env.JWT_SECRET_KEY,
+    algorithms: ['HS256'],
+  }),
+  checkSchema(dataIOGetTypeNamesRecordBody, ['body']),
+  checkValidationErrors,*/
+  getAllRecords,
 );
 
 

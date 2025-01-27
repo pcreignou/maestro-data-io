@@ -735,7 +735,8 @@ const AccountVerificationSchema: Schema = new Schema(
  originalRequestData_contacts_bankAccount_clearAccountNumber : {
    type :  String
     }
-  }
+  },
+  { collection: 'accountverififcations' } 
 );
 
 

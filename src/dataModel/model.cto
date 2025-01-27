@@ -705,14 +705,16 @@ concept BAV {
 
 @Term("BAV")
 @Crud("Createable,Readable,Updateable")
-concept BAV identified by _Id{  
+concept BAV identified by _id{  
 	@Term("BAV Id")
-    @Crud("Readable")
-    o String _Id
+  @Crud("Readable")
+  o String _id
+  @Term("MaestroId")
+   @Crud("Createable,Readable,Updateable")
+  o String masterRecordId optional
   @Term("responseHeader_overallResponse_decision")
   @Crud("Createable,Readable,Updateable")
   o String  responseHeader_overallResponse_decision optional
-
   @Term("responseHeader_overallResponse_decisionText")
   @Crud("Createable,Readable,Updateable")
   o String responseHeader_overallResponse_decisionText optional

@@ -18,6 +18,9 @@ const paths = {
     },
     GetTypeDefinitions: {
       Post: '/getTypeDefinitions',
+    },
+    GetAllRecords: {
+      Get: '/getAllRecords',
     }
   },
   Auth: {

@@ -12,6 +12,8 @@ import mongoose from 'mongoose';
 import { convertChalkStringToMarkdown } from 'ts-command-line-args';
 import { BankAccountVerificationResponse, convertSourceToTarget, SourceJSON, TargetJSON } from 'src/utils/jsonTransformUtil';
 import { BAVSchema } from 'src/models/data';
+import { response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
 enum DECORATOR_NAMES {
   TERM = 'Term',
@@ -386,7 +388,7 @@ export const patchRecord = (req: IReq<PatchRecordBody>, res: IRes): IRes => {
  * @param {IRes} res - The response object to send back.
  * @return {IRes}
  */
-export const searchRecords = async (req: IReq<SearchRecordsBody>, res: IRes): Promise<IRes> => {
+/*export const searchRecords = async (req: IReq<SearchRecordsBody>, res: IRes): Promise<IRes> => {
   const {
     body: {
       query,
@@ -413,7 +415,8 @@ export const searchRecords = async (req: IReq<SearchRecordsBody>, res: IRes): Pr
     return res.status(500).json(generateErrorResponse(ErrorCode.INTERNAL_ERROR, err)).send();
   }
  
-};
+};*/
+
 
 /**
  * Retrieves the type names for Account and MasterRecordId and Address.
@@ -522,6 +525,14 @@ async function asyncCall(jsonInput: string)  {
   
 }
 
+export const getAllRecords = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const records = await Data.find();
+    return res.status(200).json({ records });
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
 
 
 export const verifyBankAccount = async (req: IReq<TargetJSON>, res: IRes) => {
@@ -582,3 +593,40 @@ export const verifyBankAccount = async (req: IReq<TargetJSON>, res: IRes) => {
     return res.json(err);
   }
 }
+
+/**
+ * Searches records based on the provided query and pagination.
+ * @param {IReq<SearchRecordsBody>} req - The request object containing query and pagination.
+ * @param {IRes} res - The response object to send back.
+ * @return {IRes}
+ */
+export const searchRecords = async (req: IReq<SearchRecordsBody>, res: IRes): Promise<IRes> => {
+  const {
+    body: {
+      query,
+      pagination
+    },
+  } = req;
+  try {
+    if (!query || !pagination) {
+      return res.status(400).json(generateErrorResponse(ErrorCode.BAD_REQUEST, 'Query or pagination missing in request')).send();
+    }
+    
+    const data = await Data.find();
+    console.log(data);
+    const index: number = QueryExecutor.execute(query, data);
+
+    if (index === -1) {
+      return res.json({ records: [] })
+    }
+    const dataResult: object = data[index];
+    console.debug(dataResult);
+    //convertDateToISO8601(dataResult, query.from);
+
+    return res.json({ records: [ResultRehydrator.filterAndRehydrate(query.attributesToSelect, data[index])] });
+  } catch (err) {
+    console.log(`Encountered an error searching data: ${err.message}`);
+    return res.status(500).json(generateErrorResponse(ErrorCode.INTERNAL_ERROR, err)).send();
+  }
+ 
+};

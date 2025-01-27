@@ -22,8 +22,10 @@ export class QueryExecutor {
      * @returns the index of the first match
      */
     public static execute(query: IQuery, inputData: object[]): number {
+        console.log(inputData);
         const operation: OperationUnion = query.queryFilter.operation;
         for (let index: number = 0; index < inputData.length; index++) {
+            console.log(inputData);
             if (QueryExecutor.executeOperation(operation, inputData[index])) {
                 return index;
             }

@@ -259,7 +259,7 @@ export const createRecord = async (req: IReq<CreateRecordBody>, res: IRes): Prom
     const item = new Data({
       _id: recordId,
        typeName,
-       masterRecordId : recordId.toString,
+       masterRecordId : recordId.toString(),
        responseHeader_requestType ,
        responseHeader_tenantId ,
        responseHeader_clientReferenceId ,

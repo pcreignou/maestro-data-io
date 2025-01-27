@@ -72,8 +72,8 @@ export interface IContact{
 
 }
 
-export interface IAccountVerification{
-  
+export interface IAccountVerification{  
+    masterRecordId: string,
     responseHeader_requestType: string;
     responseHeader_tenantId: string;
     responseHeader_clientReferenceId: string;
@@ -246,6 +246,9 @@ const AccountVerificationSchema: Schema = new Schema(
     responseHeader_requestType: {
    type: String
     },
+    masterRecordId: {
+      type: String
+       },
     responseHeader_tenantId: {
       type: String
        },

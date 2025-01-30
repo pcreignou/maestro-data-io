@@ -1,0 +1,114 @@
+namespace org.docusign.maestro@1.0.0
+
+@Term("RequestPayload")
+@Crud("Createable,Readable,Updateable")
+concept RequestPayload identified by RequestPayloadId {
+	@Term("RequestPayloadId")
+	@Crud("Createable,Readable,Updateable")
+	  o String RequestPayloadId optional
+	@Term("requestID")
+	@Crud("Createable,Readable,Updateable")
+	  o String requestID
+	@Term("PID")
+	@Crud("Createable,Readable,Updateable")
+	  o String PID
+	@Term("cinfo")
+	@Crud("Createable,Readable,Updateable")
+	  --> Cinfo cinfo
+	@Term("deviceInfo")
+	@Crud("Createable,Readable,Updateable")
+	  --> DeviceInfo deviceInfo
+}
+
+@Term("Cinfo")
+@Crud("Createable,Readable,Updateable")
+concept Cinfo identified by CinfoId {
+	@Term("CinfoId")
+	@Crud("Createable,Readable,Updateable")
+	  o String CinfoId optional
+	@Term("firstName")
+	@Crud("Createable,Readable,Updateable")
+	  o String firstName
+	@Term("lastName")
+	@Crud("Createable,Readable,Updateable")
+	  o String lastName
+	@Term("zipCode")
+	@Crud("Createable,Readable,Updateable")
+	  o String zipCode
+	@Term("ssn4")
+	@Crud("Createable,Readable,Updateable")
+	  o String ssn4
+}
+
+@Term("DeviceInfo")
+@Crud("Createable,Readable,Updateable")
+concept DeviceInfo identified by DeviceInfoId {
+	@Term("DeviceInfoId")
+	@Crud("Createable,Readable,Updateable")
+	  o String DeviceInfoId optional
+	@Term("jsc")
+	@Crud("Createable,Readable,Updateable")
+	  o String jsc
+	@Term("hdm")
+	@Crud("Createable,Readable,Updateable")
+	  o String hdm
+	@Term("ipAddress")
+	@Crud("Createable,Readable,Updateable")
+	  o String ipAddress
+	@Term("headers")
+	@Crud("Createable,Readable,Updateable")
+}
+
+@Term("SuccessResponse")
+@Crud("Createable,Readable,Updateable")
+concept SuccessResponse identified by SuccessResponseId {
+	@Term("SuccessResponseId")
+	@Crud("Createable,Readable,Updateable")
+	  o String SuccessResponseId optional
+	@Term("requestID")
+	@Crud("Createable,Readable,Updateable")
+	  o String requestID
+	@Term("success")
+	@Crud("Createable,Readable,Updateable")
+	  o String success
+	@Term("code")
+	@Crud("Createable,Readable,Updateable")
+	  o String code
+	@Term("profile")
+	@Crud("Createable,Readable,Updateable")
+	  --> Profile profile
+}
+
+@Term("ErrorResponse")
+@Crud("Createable,Readable,Updateable")
+concept ErrorResponse identified by ErrorResponseId {
+	@Term("ErrorResponseId")
+	@Crud("Createable,Readable,Updateable")
+	  o String ErrorResponseId optional
+	@Term("requestID")
+	@Crud("Createable,Readable,Updateable")
+	  o String requestID
+	@Term("code")
+	@Crud("Createable,Readable,Updateable")
+	  o String code
+	@Term("success")
+	@Crud("Createable,Readable,Updateable")
+	  o String success
+}
+
+@Term("v1_request_example")
+@Crud("Createable,Readable,Updateable")
+concept v1_request_example identified by v1_request_exampleId {
+	@Term("v1_request_exampleId")
+	@Crud("Createable,Readable,Updateable")
+	  o String v1_request_exampleId optional
+}
+
+@Term("v1_response_example")
+@Crud("Createable,Readable,Updateable")
+concept v1_response_example identified by v1_response_exampleId {
+	@Term("v1_response_exampleId")
+	@Crud("Createable,Readable,Updateable")
+	  o String v1_response_exampleId optional
+}
+

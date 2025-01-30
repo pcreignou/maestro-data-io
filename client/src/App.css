@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 80%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -40,3 +40,180 @@
 .read-the-docs {
   color: #888;
 }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900');
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary-main: #ba2cec;
+  --primary-dark: #5f067e;
+  --secondary-main: #8154ff;
+  --white-main: #ffffff;
+  --black-main: #080014;
+  --black-light: #393242;
+  --black-extralight: #96929b;
+  --black-extraextralight: #cecdd0;
+  --blue-main: #2f80ed;
+  --blue-light: #d5e6fb;
+  --green-main: #27ae60;
+  --green-light: #def1e6;
+  --grey-main: #f4f4f4;
+  --grey-light: #fafafa;
+  --error-main: #ff475d;
+  --red-light: #ffdadf;
+  --red-extralight: #ffdad0;
+
+  --black-background-transparent: #08001480;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+  margin: 0;
+  display: flex;
+  place-items: normal;
+  background: #fff url('assets/img/hero-background.png') center;
+  background-size: cover;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: hsla(283, 79%, 69%, 0.137);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.page-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  min-width: 100vw;
+  min-height: 100vh;
+
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-background {
+  background-image: url('./assets/img/hero-background.png'); /* For public folder */
+  /* OR */
+  /* background-image: url('../assets/background.jpg'); For src/assets folder */
+  background-size: cover; /* Ensures the image covers the whole container */
+  background-position: center; /* Centers the image */
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+}
+
+.heroContent {
+  width: 60%;
+  color: var(--black-main);
+  margin: 80px auto;
+  padding: 0;
+
+  @media screen and (max-width: 991.98px) {
+      width: 100%;
+      padding: 1rem;
+      margin: 0;
+  }
+}
+
+.messageBox {
+  width: 100%;
+}
+
+.messageBox h1 {
+  text-align: center;
+  margin-bottom: 25px;
+
+  color: var(--black-main);
+  line-height: 72px;
+  font-size: 64px;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.messageBox p {
+  text-align: center;
+  line-height: 28px;
+  margin-bottom: 32px;
+
+  color: var(--black-light);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonGroup button {
+  height: 40px;
+  width: 240px;
+  line-height: 24px;
+  border-radius: 2px;
+  background-color: var(--primary-main);
+
+  color: var(--white-main);
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+.buttonGroup button:hover {
+  background-color: var(--secondary-main);
+}
+
+.datagrid{
+  background-color: #ffffff;
+  white-space: 'normal';
+  word-wrap: 'break-word';
+  line-height: 2px;
+  height:auto;
+  
+}
+

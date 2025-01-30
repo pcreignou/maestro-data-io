@@ -1,0 +1,385 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Instant Form Fill
+  description: >-
+    Form Fill API provides extensive consumer information to be used in the form
+    fill process, when a client makes a request with limited consumer data. In
+    the request, a client needs to provide First Name, Last Name, Zip Code, and
+    Last Four Digits of SSN.  Additionally, for fraud and security purposes,
+    information from Experian's Device Intelligence product can be collected
+    and  sent through the API during the user entry process. The API processes
+    the request, leverages the search algorithm, returns the consumer info in
+    the response when found. The client needs to have valid credentials to
+    connect to the API through Apigee.
+  contact:
+    name: Instant-Form-Fill
+    email: us.support.qas.com@experian.com
+schemes:
+  - https
+host: sandbox-us-api.experian.com
+securityDefinitions:
+  OauthSecurity:
+    type: oauth2
+    flow: password
+    tokenUrl: 'https://sandbox-us-api.experian.com/oauth2/v1/token'
+    scopes:
+      user: user scope
+paths:
+  /instant-form-fill/v1:
+    x-swagger-router-controller: instant-form-fill/v1
+    post:
+      operationId: v1
+      description: >-
+        This API is used to get the expanded information of a consumer matched
+        in the Instant Form Fill database, based on limited consumer information
+        provided. To retrieve this information, the client needs to send the
+        consumer's First Name, Last Name, Zip Code, Last 4 of SSN, and Device
+        Intelligence information.
+      security:
+        - OauthSecurity:
+            - user
+      tags:
+        - Experian Data Quality
+      parameters:
+        - name: RequestPayload
+          in: body
+          required: true
+          description: >-
+            To request a consumer's complete information, the following
+            information  must be sent in the body.
+          schema:
+            $ref: '#/definitions/RequestPayload'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SuccessResponse'
+        '400':
+          description: Bad Request - Invalid/Missing Parameters
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: Forbidden - Client IP not whitelisted
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '415':
+          description: Unsupported Media Type
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  RequestPayload:
+    properties:
+      requestID:
+        description: >-
+          A unique identifier associated with this request. Can only contain
+          English characters (lowercase and uppercase), numbers and underscores.
+        type: string
+        maxLength: 30
+        default: '123'
+      PID:
+        description: >-
+          Product ID issued by the Form Fill team. It determines request
+          configuration.
+        type: string
+        default: device_only
+      cinfo:
+        type: object
+        $ref: '#/definitions/Cinfo'
+      deviceInfo:
+        type: object
+        $ref: '#/definitions/DeviceInfo'
+    required:
+      - requestID
+      - PID
+      - cinfo
+      - DeviceInfo
+  Cinfo:
+    description: Consumer's information
+    type: object
+    properties:
+      firstName:
+        description: Consumer's first name
+        maxLength: 60
+        type: string
+        default: Julie
+      lastName:
+        description: Consumer's last name
+        maxLength: 60
+        type: string
+        default: Murrel
+      zipCode:
+        description: Consumer's 5-digit zip code
+        maxLength: 5
+        type: string
+        default: '60632'
+      ssn4:
+        description: Consumer's last 4-digit SSN
+        maxLength: 4
+        type: string
+        default: '2887'
+    required:
+      - firstName
+      - lastName
+      - zipCode
+      - ssn4
+  DeviceInfo:
+    description: >-
+      Information from the consumer's device that submitted to the web server hosting the form. 
+      This is to be used for fraudnet detection.  Some of this information is submitted as part 
+      of the javascript collector and some of it needs to be extracted from the web request by 
+      the server hosting the form.
+    type: object
+    properties:
+      jsc:
+        description: JavaScript Collector payload
+        type: string
+        default: a1d03sdf30soflefgid
+      hdm:
+        description: >-
+          Experian's Hosted Device Manager (HDM) web service response
+          information
+        type: string
+        default: 2odf0gm4ggy4f0sdgk4e
+      ipAddress:
+        description: IP address of the consumer's device that submitted to the web server hosting the form.
+        type: string
+      headers:
+        description: Array of httpe headers submitted from the consumer's device to the web server hosting the form.
+        type: array
+        items:
+          type: object
+          properties: 
+            headerName : 
+              type: string
+            headerValue :
+              type: string
+    required:
+      - jsc
+      - hdm
+  SuccessResponse:
+    description: ''
+    type: object
+    properties:
+      requestID:
+        description: A unique identifier associated with this request.
+        type: string
+      success:
+        description: Indicates whether the request is successful or not.
+        type: string
+      code:
+        description: >-
+          An error code mapped to the processing result. Refer to the onboarding
+          document for details.
+        type: string
+      profile:
+        type: object
+        description: >-
+          Profile of the consumer found in Datalab's database. If the code is
+          not C000, Profile field does not show up.
+        properties:
+          firstName:
+            description: first name
+            type: string
+            maxLength: 60
+          middleName:
+            description: middle name
+            type: string
+            maxLength: 20
+          lastName:
+            description: last name
+            type: string
+            maxLength: 60
+          secondSurname:
+            description: Second surname
+            type: string
+            maxLength: 60
+          suffix:
+            description: suffix
+            type: string
+            maxLength: 10
+          address:
+            description: Street address
+            type: string
+            maxLength: 60
+          unit:
+            description: 'Apt, Unit, etc.'
+            type: string
+            maxLength: 10
+          city:
+            description: City
+            type: string
+            maxLength: 60
+          state:
+            description: State
+            type: string
+            maxLength: 2
+          zip:
+            description: Zip code
+            type: string
+            maxLength: 5
+          zip+4:
+            description: Zip code extension
+            type: string
+            maxLength: 4
+          yearAtAddress:
+            description: Years living in the current address
+            type: string
+            maxLength: 2
+          monthAtAddress:
+            description: Additional months living in the current address
+            type: string
+            maxLength: 2
+          primaryPhone:
+            description: Priamary phone number
+            type: string
+            maxLength: 10
+          dob:
+            description: >-
+              Date of Birth in the format MM/DD/YYYY.  If dob is not availabe,
+              this variable will be empty.  If only the year of birth is
+              available, it will be provided alone.
+            type: string
+            maxLength: 10
+          ssn4:
+            description: Last 4 digits of SSN.
+            type: string
+            maxLength: 4
+          ssn9:
+            description: >-
+              Full digits of SSN. This number may be used for additonal consumer
+              identity verification.
+            type: string
+            maxLength: 9
+          spouseFirstName:
+            description: Spouse's first name
+            type: string
+            maxLength: 60
+          previousAddress:
+            description: Previous street address
+            type: string
+            maxLength: 60
+          previousUnit:
+            description: 'Apt, Unit, etc.'
+            type: string
+            maxLength: 10
+          previousCity:
+            description: City
+            type: string
+            maxLength: 60
+          previousState:
+            description: State
+            type: string
+            maxLength: 2
+          previousZip:
+            description: Zip code
+            type: string
+            maxLength: 5
+          previousZip+4:
+            description: Zip code extension
+            type: string
+            maxLength: 4
+          yearAtPreviousAddress:
+            description: Years living in the previous address
+            type: string
+            maxLength: 2
+          monthAtPreviousAddress:
+            description: Additional months living in the previous address
+            type: string
+            maxLength: 2
+  ErrorResponse:
+    description: ''
+    type: object
+    properties:
+      requestID:
+        description: A unique identifier associated with this request.
+        type: string
+      code:
+        description: >-
+          Error code mapped to a sepecific error. Composed of one character "C"
+          or "G" followed by three digits. Refer to table 2.3.4-1 in the
+          onboarding document for more details.
+        type: string
+      success:
+        description: 'false'
+        type: string
+  v1_request_example:
+    type: object
+    description: |-
+      {
+        "requestID": "123",
+        "PID": "device_only",
+        "cinfo":{
+            "firstName": "Julie",
+            "lastName": "Murrel",
+            "zipCode": "60632",
+            "ssn4": "60632"},
+        "deviceInfo":{
+            "jsc": "a1d03sdf30soflefgid", 
+            "hdm": "2odf0gm4ggy4f0sdgk4e",
+            "headers" : [
+              { "headerName": "accept-language",
+               "headerValue": "en-US,en;q=0.8"},
+               {
+                "headerName": "accept",
+                "headerValue": "*/*"
+                }
+              ]
+        }
+      }
+  v1_response_example:
+    type: object
+    description: |-
+      {
+        "profile": {
+          "yearAtAddress": 0,
+          "suffix": "Jr.",
+          "primaryPhone": "1234567891",
+          "monthAtAddress": 7,
+          "previousAddress": "2222 PREVIOUS ST",
+          "previousState": "CA",
+          "city": "CHICAGO",
+          "zip": "60632",
+          "middleName": "K",
+          "state": "IL",
+          "previousZip+4": "1111",
+          "unit": "5A",
+          "monthAtPreviousAddress": 6,
+          "previousCity": "SAN DIEGO",
+          "zip+4": "3238",
+          "ssn4": "2887",
+          "previousUnit": "APT #1",
+          "yearAtPreviousAddress": 0,
+          "ssn9": "666532887",
+          "address": "5311 S LAWNDALE AVE",
+          "secondSurname": "STEVENS",
+          "firstName": "JULIE",
+          "previousZip": "92130",
+          "dob": "02/14/1975",
+          "lastName": "MURREL",
+          "spouseFirstName": "ADAM"},
+        "code": "C000",
+        "requestID": "123",
+        "success": "true"
+      }
+

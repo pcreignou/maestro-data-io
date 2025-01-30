@@ -23,6 +23,33 @@ const paths = {
       Get: '/getAllRecords',
     }
   },
+  CRM: {
+    Base: '/crm',
+    CreateRecord: {
+      Post: '/createRecord',
+    },
+    PatchRecord: {
+      Post: '/patchRecord',
+    },
+    SearchRecords: {
+      Post: '/searchRecords',
+    },
+    GetTypeNames: {
+      Post: '/getTypeNames',
+    },
+    GetTypeDefinitions: {
+      Post: '/getTypeDefinitions',
+    },
+    GetAllRecords: {
+      Get: '/getAllRecords',
+    }
+  },
+  Model: {
+    Base: '/model',
+    CreateModel: {
+      Post: '/save-model',
+    }    
+  },
   Auth: {
     Base: '/oauth',
     Authorize: {
@@ -33,7 +60,7 @@ const paths = {
     },
     UserInfo: {
       Get: '/userinfo',
-    },
+    }    
   },
 };
 

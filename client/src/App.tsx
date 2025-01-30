@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import './App.css';
 import axios from 'axios';
 
 const App: React.FC = () => {
   const [data, setData] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,16 +41,27 @@ const App: React.FC = () => {
     }, {});
   };
 
+  const handleActionClick = (rowId: number) => {
+    axios
+      .post('/api/launch-action', { id: rowId })
+      .then((response) => {
+        console.log(`Action triggered for row ${rowId}`, response.data);
+        alert(`Action successfully triggered for row ${rowId}`);
+      })
+      .catch((error) => {
+        console.error(`Error triggering action for row ${rowId}`, error);
+        alert(`Failed to trigger action for row ${rowId}`);
+      });
+  };
+
   const rows = data.map((record: any, index: number) => ({ id: index + 1, ...flattenObject(record) }));
 
   // Mapping field names to user-friendly column headers
   const fieldNameMapping: Record<string, string> = {
-    "responseHeader_overallResponse_decision": "Decision",
-    "responseHeader_overallResponse_decisionText": "Decision Text",
+    "responseHeader_overallResponse_decision": "Decision",    
     "responseHeader_overallResponse_decisionReasons_0": "Reason 1",
     "responseHeader_overallResponse_decisionReasons_1": "Reason 2",
     "responseHeader_overallResponse_decisionReasons_2": "Reason 3",
-    "originalRequestData_application_applicants_contactId": "Applicant Contact ID",
     "originalRequestData_contacts_person_names_title": "Title",
     "originalRequestData_contacts_person_names_firstName": "First Name",
     "originalRequestData_contacts_person_names_surName": "Last Name",
@@ -61,7 +74,7 @@ const App: React.FC = () => {
   };
 
   // Dynamically create columns based on keys from the first row of data
-  const columns: GridColDef[] = data.length
+  const dynamicColumns: GridColDef[] = data.length
     ? Object.keys(flattenObject(data[0]))
     .filter((key) => key in fieldNameMapping)
     .map((key) => ({
@@ -73,12 +86,32 @@ const App: React.FC = () => {
       }))
     : [];
 
+    const actionColumn: GridColDef = {
+      field: 'action',
+      headerName: 'Action',
+      flex: 1,
+      sortable: false,
+      renderCell: (params) => (
+        <button
+          onClick={() => handleActionClick(params.row.id)}
+          className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+        >
+          Launch Action
+        </button>
+      ),
+    };
+  
+    const columns = [...dynamicColumns, actionColumn];
+
   return (
-    <div style={{ height: 600, width: '98%', padding: '20px' }}>
-      <h1 style={{ marginBottom: '20px', fontSize: '24px', fontWeight: 'bold', textAlign: 'center' }}>
-        Docusign Maestro Extension App Account Verification
-      </h1>
-      <DataGrid 
+    <div>
+    <div className="messageBox">
+         <h1>     Docusign Maestro Extension App Account Verification  </h1>        
+       </div>   
+    <div style={{ height: 600, width: '100%', padding: '20px'}} className="app-background">
+        
+      <DataGrid  
+      className="datagrid"      
         rows={rows} 
         columns={columns} 
         pageSize={10} 
@@ -92,7 +125,8 @@ const App: React.FC = () => {
           },
         }}
       />
-    </div>
+    </div> 
+    </div>   
   );
 };
 

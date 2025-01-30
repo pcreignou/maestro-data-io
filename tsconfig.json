@@ -70,10 +70,12 @@
     "removeComments": true
   },
   "include": [
+    "src/**/*",
     "src/**/*.ts",
     "build.ts"
 , "output/concerto@1.0.0.ts", "output/org.example@1.0.0.ts", "output/concerto.decorator@1.0.0.ts"  ],
   "exclude": [
-    "src/public/",
+    "src/public/","models"
   ]
 }
+

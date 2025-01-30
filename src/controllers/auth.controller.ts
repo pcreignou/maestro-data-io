@@ -23,4 +23,17 @@ authRouter.get(
   getUserInfo,
 );
 
+authRouter.get(Paths.Auth.Authorize.Get, checkSchema(authorizeQuery, ['query']), checkValidationErrors, authorize);
+
+authRouter.post(Paths.Auth.Token.Post, generateAuthToken);
+
+authRouter.get(
+  Paths.Auth.UserInfo.Get,
+  jwt({
+    secret: env.JWT_SECRET_KEY,
+    algorithms: ['HS256'],
+  }),
+  getUserInfo,
+);
+
 export default authRouter;
